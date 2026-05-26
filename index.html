@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KAPET Eric — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white: #ffffff; --off-white: #f7f6f3; --light: #efefeb;
+      --mid: #c8c6be; --dark: #1a1917; --accent: #2a52d4;
+      --accent-soft: #eef0fb; --text: #2d2c2a; --muted: #7a7870;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--white); color: var(--text); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* SCROLL FADE */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--light);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 60px;
+      animation: slideDown 0.6s ease both;
+    }
+    @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .nav-logo { font-family: var(--font-display); font-size: 1.15rem; color: var(--dark); letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; padding: 80px 5% 60px; gap: 4rem; background: var(--white);
+    }
+    .hero-eyebrow {
+      display: inline-block; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+      background: var(--accent-soft); padding: 5px 12px; border-radius: 100px;
+      margin-bottom: 1.8rem;
+      animation: fadeInUp 0.8s 0.3s ease both;
+    }
+    .hero-name {
+      font-family: var(--font-display); font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.05; color: var(--dark); margin-bottom: 1.4rem;
+      animation: fadeInUp 0.8s 0.5s ease both;
+    }
+    .hero-name em { font-style: italic; color: var(--accent); }
+    .hero-desc {
+      font-size: 1.05rem; color: var(--muted); max-width: 420px;
+      margin-bottom: 2.5rem; line-height: 1.75;
+      animation: fadeInUp 0.8s 0.7s ease both;
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeInUp 0.8s 0.9s ease both; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 12px 24px; border-radius: 6px; font-family: var(--font-body);
+      font-size: 0.88rem; font-weight: 500; letter-spacing: 0.03em;
+      text-decoration: none; cursor: pointer; border: none; transition: all 0.2s;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #1e3fb5; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(42,82,212,0.25); }
+    .btn-outline { background: transparent; color: var(--dark); border: 1.5px solid var(--mid); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-cv { background: var(--off-white); color: var(--dark); border: 1.5px solid var(--light); }
+    .btn-cv:hover { background: var(--light); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+
+    /* PHOTO */
+    .hero-visual { display: flex; justify-content: center; align-items: center; animation: fadeInRight 1s 0.4s ease both; }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+    .avatar-block { position: relative; width: 320px; height: 400px; }
+    .avatar-bg {
+      position: absolute; inset: 0;
+      background: var(--off-white);
+      border-radius: 200px 200px 160px 160px;
+      border: 1px solid var(--light);
+    }
+    .avatar-photo {
+      position: absolute; inset: 0;
+      border-radius: 200px 200px 160px 160px;
+      overflow: hidden;
+    }
+    .avatar-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+      transition: transform 0.5s ease;
+    }
+    .avatar-photo:hover img { transform: scale(1.04); }
+    .badge-floating {
+      position: absolute; background: white; border: 1px solid var(--light);
+      border-radius: 8px; padding: 8px 14px; font-size: 0.78rem; font-weight: 500;
+      color: var(--dark); box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      display: flex; align-items: center; gap: 6px; white-space: nowrap;
+    }
+    .badge-1 { top: 30px; right: -14px; animation: float 3s ease-in-out infinite; }
+    .badge-2 { bottom: 50px; left: -24px; animation: float 3s ease-in-out infinite 1.5s; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+    .section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.9rem, 3vw, 2.6rem); color: var(--dark); line-height: 1.15; margin-bottom: 1rem; }
+    .section-subtitle { color: var(--muted); max-width: 520px; line-height: 1.75; margin-bottom: 3rem; }
+
+    /* ABOUT */
+    #about { background: var(--off-white); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-text p { color: var(--muted); line-height: 1.85; margin-bottom: 1.2rem; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .stat-card { background: white; border: 1px solid var(--light); border-radius: 10px; padding: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+    .stat-number { font-family: var(--font-display); font-size: 2.2rem; color: var(--accent); display: block; line-height: 1; margin-bottom: 0.4rem; }
+    .stat-label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+
+    /* SKILLS */
+    #skills { background: var(--white); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+    .skill-card {
+      border: 1px solid var(--light); border-radius: 10px; padding: 1.4rem 1.6rem;
+      background: white; display: flex; align-items: flex-start; gap: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .skill-card:hover { border-color: var(--accent); box-shadow: 0 4px 18px rgba(42,82,212,0.08); transform: translateY(-2px); }
+    .skill-icon { width: 38px; height: 38px; border-radius: 8px; background: var(--accent-soft); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; }
+    .skill-info { flex: 1; }
+    .skill-name { font-weight: 500; color: var(--dark); font-size: 0.92rem; margin-bottom: 0.25rem; }
+    .skill-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    /* PROJECTS */
+    #projects { background: var(--off-white); }
+    .projects-empty { border: 1.5px dashed var(--mid); border-radius: 14px; padding: 4rem 2rem; text-align: center; }
+    .projects-empty-icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.4; }
+    .projects-empty p { color: var(--muted); font-size: 0.95rem; max-width: 380px; margin: 0 auto; line-height: 1.7; }
+    .projects-empty strong { color: var(--dark); font-weight: 500; }
+
+    /* CONTACT */
+    #contact { background: var(--dark); text-align: center; }
+    #contact .section-label { color: #8899e0; }
+    #contact .section-title { color: var(--white); margin-bottom: 0.6rem; }
+    #contact .section-subtitle { color: #9b9890; margin: 0 auto 3rem; }
+    .contact-links { display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%; max-width: 420px; margin: 0 auto; }
+    .contact-link { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 15px 24px; border-radius: 10px; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: all 0.2s; width: 100%; }
+    .contact-link-email { background: var(--accent); color: white; }
+    .contact-link-email:hover { background: #1e3fb5; transform: translateY(-2px); }
+    .contact-link-linkedin { background: rgba(255,255,255,0.07); color: #d0cfc9; border: 1px solid rgba(255,255,255,0.1); }
+    .contact-link-linkedin:hover { background: rgba(255,255,255,0.13); color: white; }
+    .contact-link-whatsapp { background: #25D366; color: #ffffff; border: none; }
+    .contact-link-whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1.5rem 5%; font-size: 0.78rem; color: #5a5850; }
+
+    /* CURSOR EFFECT */
+    .cursor-glow { width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(42,82,212,0.07) 0%, transparent 70%); position: fixed; pointer-events: none; z-index: 0; transform: translate(-50%,-50%); transition: left 0.08s, top 0.08s; }
+
+    /* PROJECT CARD */
+    #projects { background: var(--white); }
+    .project-card {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      background: var(--off-white); border: 1px solid var(--light);
+      border-radius: 16px; padding: 2rem; margin-bottom: 2rem;
+      align-items: start;
+    }
+    .gallery-main { border-radius: 10px; overflow: hidden; margin-bottom: 0.8rem; cursor: zoom-in; }
+    .gallery-main img { width: 100%; height: 280px; object-fit: cover; object-position: top; display: block; transition: transform 0.3s; }
+    .gallery-main img:hover { transform: scale(1.02); }
+    .gallery-thumbs { display: flex; gap: 0.5rem; }
+    .thumb { width: 70px; height: 70px; object-fit: cover; object-position: top; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s, opacity 0.2s; opacity: 0.6; }
+    .thumb.active, .thumb:hover { border-color: var(--accent); opacity: 1; }
+    .project-info { display: flex; flex-direction: column; gap: 1rem; }
+    .project-header { display: flex; align-items: center; gap: 1rem; }
+    .project-num { font-family: var(--font-display); font-size: 2.5rem; color: var(--accent-soft); font-weight: 700; line-height: 1; }
+    .project-type { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: 4px 12px; border-radius: 100px; }
+    .project-title { font-family: var(--font-display); font-size: 1.8rem; color: var(--dark); line-height: 1.2; }
+    .project-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.8; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .project-stack span { font-size: 0.72rem; font-weight: 500; background: white; border: 1px solid var(--light); color: var(--dark); padding: 4px 10px; border-radius: 100px; }
+    .project-status { font-size: 0.8rem; color: var(--muted); font-style: italic; }
+
+    /* LIGHTBOX */
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 999; align-items: center; justify-content: center; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 10px; object-fit: contain; }
+    .lightbox-close { position: fixed; top: 20px; right: 24px; background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; z-index: 1000; }
+
+    @media (max-width: 768px) {
+      .project-card { grid-template-columns: 1fr; }
+    }
+
+    /* STAT SUFFIX */
+    .stat-suffix { font-family: var(--font-display); font-size: 2rem; color: var(--accent); line-height: 1; }
+
+    /* SERVICES */
+    #services { background: var(--white); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.4rem; }
+    .service-card {
+      border: 1px solid var(--light); border-radius: 12px; padding: 2rem 1.8rem;
+      background: white; position: relative; overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .service-card:hover { border-color: var(--accent); box-shadow: 0 8px 30px rgba(42,82,212,0.1); transform: translateY(-3px); }
+    .service-num { font-family: var(--font-display); font-size: 3rem; color: var(--accent-soft); line-height: 1; margin-bottom: 0.5rem; font-weight: 700; }
+    .service-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+    .service-title { font-size: 1rem; font-weight: 600; color: var(--dark); margin-bottom: 0.6rem; }
+    .service-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .service-tags span { font-size: 0.72rem; font-weight: 500; background: var(--accent-soft); color: var(--accent); padding: 3px 10px; border-radius: 100px; }
+
+    /* TOOLS */
+    #tools { background: var(--off-white); }
+    .tools-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .tool-item {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.4rem; background: white; border: 1px solid var(--light); border-radius: 12px;
+      padding: 1.2rem 1.4rem; min-width: 90px;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+    .tool-item:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(42,82,212,0.1); }
+    .tool-icon { font-size: 1.6rem; }
+    .tool-item img, .tool-item svg { width: 40px; height: 40px; object-fit: contain; }
+    .tool-name { font-size: 0.75rem; font-weight: 500; color: var(--dark); text-align: center; }
+
+    /* CONTACT FORM */
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 900px; margin: 0 auto; text-align: left; }
+    .contact-form-box { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-field input, .contact-field textarea {
+      width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px; padding: 12px 16px; color: #e0ddd8; font-family: var(--font-body);
+      font-size: 0.88rem; outline: none; transition: border-color 0.2s; resize: none;
+    }
+    .contact-field input::placeholder, .contact-field textarea::placeholder { color: #6a6860; }
+    .contact-field input:focus, .contact-field textarea:focus { border-color: var(--accent); }
+    .cf-submit { width: 100%; justify-content: center; margin-top: 0.5rem; }
+    .cf-note { font-size: 0.8rem; color: #6ee49a; margin-top: 0.4rem; min-height: 1.2em; }
+    .btn-wa-form { background: #25D366; color: white; border: none; width: 100%; justify-content: center; }
+    .btn-wa-form:hover { background: #1ebe5d; transform: translateY(-2px); }
+    .contact-links-side { display: flex; flex-direction: column; gap: 1rem; justify-content: center; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .contact-wrapper { grid-template-columns: 1fr; }
+    }
+
+    /* RESPONSIVE (original) */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding-top: 100px; text-align: center; }
+      .hero-desc { margin: 0 auto 2.5rem; }
+      .hero-cta { justify-content: center; }
+      .hero-visual { order: -1; }
+      .avatar-block { width: 240px; height: 300px; }
+      #about { grid-template-columns: 1fr; gap: 2.5rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor-glow" id="glow"></div>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Kapet Eric</span>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-eyebrow">Ingénieur · Designer · Passionné</span>
+    <h1 class="hero-name">KAPET<br><em>Eric</em></h1>
+    <p class="hero-desc">Passionné par les technologies et le design, je suis ingénieur en informatique &amp; réseaux, développeur web et infographiste. J'aime transformer des idées complexes en solutions simples, fonctionnelles et visuellement impactantes.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Me contacter</a>
+      <a href="#skills" class="btn btn-outline">Voir mes compétences</a>
+      <a href="CV_Kapet_Eric.pdf" download="CV_Kapet_Eric.pdf" class="btn btn-cv">⬇ Télécharger mon CV</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="avatar-block">
+      <div class="avatar-bg"></div>
+      <div class="avatar-photo">
+        <img src="images/photo.jpeg" alt="KAPET Eric"/>
+      </div>
+      <div class="badge-floating badge-1"><span class="badge-dot"></span> Réseaux Cisco</div>
+      <div class="badge-floating badge-2"><span class="badge-dot"></span> Design &amp; Dev</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text reveal">
+    <p class="section-label">À propos</p>
+    <h2 class="section-title">Technique<br>et créativité,<br><em>réunis.</em></h2>
+    <p>Passionné par l'informatique sous toutes ses formes, je maîtrise aussi bien l'infrastructure réseau que le développement web et le design graphique.</p>
+    <p>Mon approche allie rigueur d'ingénieur et sensibilité artistique — deux qualités complémentaires pour concevoir des solutions à la fois robustes et soignées.</p>
+  </div>
+  <div class="about-stats">
+    <div class="stat-card reveal reveal-delay-1">
+      <span class="stat-number counter" data-target="2">0</span><span class="stat-suffix">+</span>
+      <span class="stat-label">Années d'expérience</span>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <span class="stat-number counter" data-target="4">0</span>
+      <span class="stat-label">Projets réalisés</span>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <span class="stat-number counter" data-target="88">0</span><span class="stat-suffix">%</span>
+      <span class="stat-label">Clients satisfaits</span>
+    </div>
+    <div class="stat-card reveal reveal-delay-4">
+      <span class="stat-number">6</span>
+      <span class="stat-label">Services proposés</span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label reveal">Compétences</p>
+  <h2 class="section-title reveal reveal-delay-1">Ce que je maîtrise</h2>
+  <p class="section-subtitle reveal reveal-delay-2">Un ensemble de compétences complémentaires couvrant l'informatique, les réseaux, le développement et le design.</p>
+  <div class="skills-grid">
+    <div class="skill-card reveal reveal-delay-1"><div class="skill-icon">🖥️</div><div class="skill-info"><p class="skill-name">Bureautique &amp; IT Essentials</p><p class="skill-desc">Maintenance, assistance technique et gestion du parc informatique.</p></div></div>
+    <div class="skill-card reveal reveal-delay-2"><div class="skill-icon">🌐</div><div class="skill-info"><p class="skill-name">Développement Web</p><p class="skill-desc">Conception de pages web avec HTML &amp; CSS, interfaces propres et structurées.</p></div></div>
+    <div class="skill-card reveal reveal-delay-3"><div class="skill-icon">🗄️</div><div class="skill-info"><p class="skill-name">Bases de données</p><p class="skill-desc">Installation et configuration de MySQL et Oracle.</p></div></div>
+    <div class="skill-card reveal reveal-delay-4"><div class="skill-icon">🎨</div><div class="skill-info"><p class="skill-name">Infographie &amp; Design</p><p class="skill-desc">Création visuelle, design graphique et identité visuelle.</p></div></div>
+    <div class="skill-card reveal reveal-delay-5"><div class="skill-icon">💻</div><div class="skill-info"><p class="skill-name">Systèmes d'exploitation</p><p class="skill-desc">Bonne maîtrise des OS courants (Windows, Linux).</p></div></div>
+    <div class="skill-card reveal reveal-delay-6"><div class="skill-icon">🔗</div><div class="skill-info"><p class="skill-name">Réseaux Cisco</p><p class="skill-desc">Configuration de LAN, VLAN et protocoles réseau avec équipements Cisco.</p></div></div>
+    <div class="skill-card reveal reveal-delay-1"><div class="skill-icon">⚙️</div><div class="skill-info"><p class="skill-name">Serveurs Windows &amp; PowerShell</p><p class="skill-desc">Administration et gestion de serveurs Windows via PowerShell.</p></div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label reveal">Services</p>
+  <h2 class="section-title reveal reveal-delay-1">Ce que je propose</h2>
+  <p class="section-subtitle reveal reveal-delay-2">Des solutions complètes, de l'infrastructure réseau au design visuel en passant par le développement web.</p>
+  <div class="services-grid">
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">01</div>
+      <div class="service-icon">🖥️</div>
+      <h3 class="service-title">Maintenance Informatique</h3>
+      <p class="service-desc">Diagnostic, réparation et assistance technique pour particuliers et entreprises. Intervention rapide et efficace sur tout type de panne matérielle ou logicielle.</p>
+      <div class="service-tags"><span>Diagnostic</span><span>Assistance</span><span>Réparation</span></div>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">02</div>
+      <div class="service-icon">🔗</div>
+      <h3 class="service-title">Configuration Réseau Cisco</h3>
+      <p class="service-desc">Mise en place et configuration de réseaux LAN/VLAN, routeurs et switches Cisco pour des infrastructures sécurisées et performantes.</p>
+      <div class="service-tags"><span>LAN / VLAN</span><span>Cisco</span><span>Protocoles</span></div>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-num">03</div>
+      <div class="service-icon">🌐</div>
+      <h3 class="service-title">Création de Sites Web</h3>
+      <p class="service-desc">Conception de sites modernes, responsive et performants avec HTML, CSS, JavaScript et WordPress/Elementor. Du site vitrine au portfolio sur mesure.</p>
+      <div class="service-tags"><span>HTML / CSS</span><span>WordPress</span><span>Responsive</span></div>
+    </div>
+    <div class="service-card reveal reveal-delay-4">
+      <div class="service-num">04</div>
+      <div class="service-icon">🎨</div>
+      <h3 class="service-title">Design Graphique & Infographie</h3>
+      <p class="service-desc">Création d'identités visuelles, affiches, bannières et supports de communication avec un sens aigu de l'esthétique et de la lisibilité.</p>
+      <div class="service-tags"><span>Identité visuelle</span><span>Figma</span><span>Infographie</span></div>
+    </div>
+    <div class="service-card reveal reveal-delay-5">
+      <div class="service-num">05</div>
+      <div class="service-icon">🗄️</div>
+      <h3 class="service-title">Installation Bases de Données</h3>
+      <p class="service-desc">Installation, configuration et administration de bases de données MySQL et Oracle pour des applications robustes et bien structurées.</p>
+      <div class="service-tags"><span>MySQL</span><span>Oracle</span><span>Administration</span></div>
+    </div>
+    <div class="service-card reveal reveal-delay-6">
+      <div class="service-num">06</div>
+      <div class="service-icon">⚙️</div>
+      <h3 class="service-title">Gestion Serveurs Windows</h3>
+      <p class="service-desc">Administration et automatisation de serveurs Windows via PowerShell. Gestion des utilisateurs, des droits et de la sécurité des environnements serveur.</p>
+      <div class="service-tags"><span>Windows Server</span><span>PowerShell</span><span>Administration</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label reveal">Projets</p>
+  <h2 class="section-title reveal reveal-delay-1">Mes réalisations</h2>
+  <p class="section-subtitle reveal reveal-delay-2">Des projets concrets réalisés avec passion, de la conception à la mise en ligne.</p>
+
+  <div class="project-card reveal">
+    <div class="project-gallery">
+      <div class="gallery-main">
+        <img src="images/lisiane1.jpeg" alt="Lisiane Cosmétique - Hero" class="gallery-img active" onclick="openLightbox(this)"/>
+      </div>
+      <div class="gallery-thumbs">
+        <img src="images/lisiane1.jpeg" alt="Vue 1" class="thumb active" onclick="switchThumb(this)"/>
+        <img src="images/lisiane2.jpeg" alt="Vue 2" class="thumb" onclick="switchThumb(this)"/>
+        <img src="images/lisiane3.jpeg" alt="Vue 3" class="thumb" onclick="switchThumb(this)"/>
+        <img src="images/lisiane4.jpeg" alt="Vue 4" class="thumb" onclick="switchThumb(this)"/>
+      </div>
+    </div>
+    <div class="project-info">
+      <div class="project-header">
+        <span class="project-num">01</span>
+        <span class="project-type">Site Web · Boutique en ligne</span>
+      </div>
+      <h3 class="project-title">Lisiane Cosmétique</h3>
+      <p class="project-desc">Site vitrine et boutique en ligne pour une marque de cosmétiques de luxe africain. Design élégant en vert et doré, avec catalogue produits, services, témoignages clients et formulaire de contact. Un projet complet alliant esthétique raffinée et expérience utilisateur soignée.</p>
+      <div class="project-stack">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>WordPress</span><span>Elementor</span><span>ACF</span><span>WP Forms</span>
+      </div>
+      <div class="project-links">
+        <span class="project-status">🔒 Lien privé — non disponible publiquement</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-gallery">
+      <div class="gallery-main">
+        <img src="images/eng1.jpeg" alt="ENG Fashion - Hero" class="gallery-img active" onclick="openLightbox(this)"/>
+      </div>
+      <div class="gallery-thumbs">
+        <img src="images/eng1.jpeg" alt="Vue 1" class="thumb active" onclick="switchThumb(this)"/>
+        <img src="images/eng2.jpeg" alt="Vue 2" class="thumb" onclick="switchThumb(this)"/>
+        <img src="images/eng3.jpeg" alt="Vue 3" class="thumb" onclick="switchThumb(this)"/>
+        <img src="images/eng4.jpeg" alt="Vue 4" class="thumb" onclick="switchThumb(this)"/>
+      </div>
+    </div>
+    <div class="project-info">
+      <div class="project-header">
+        <span class="project-num">02</span>
+        <span class="project-type">Site Web · Portfolio & Boutique</span>
+      </div>
+      <h3 class="project-title">ENG Fashion</h3>
+      <p class="project-desc">Portfolio et boutique en ligne pour Ladeng Derpeng Lorie, styliste modéliste tchadienne basée à N'Djamena. Design raffiné aux tons terre de sienne et brun chocolat, mettant en valeur la haute couture africaine. Le site présente les créations, les services, un processus de commande et un formulaire de contact complet.</p>
+      <div class="project-stack">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>WordPress</span><span>Elementor</span><span>ACF</span><span>WP Forms</span>
+      </div>
+      <div class="project-links">
+        <span class="project-status">🔒 Lien privé — non disponible publiquement</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="Aperçu"/>
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+</div>
+
+<!-- TOOLS -->
+<section id="tools">
+  <p class="section-label reveal">Outils</p>
+  <h2 class="section-title reveal reveal-delay-1">Ma boîte à outils</h2>
+  <p class="section-subtitle reveal reveal-delay-2">Les technologies et logiciels que j'utilise au quotidien pour livrer des résultats de qualité.</p>
+  <div class="tools-grid reveal reveal-delay-3">
+    <div class="tool-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"/>
+      <span class="tool-name">HTML</span>
+    </div>
+    <div class="tool-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"/>
+      <span class="tool-name">CSS</span>
+    </div>
+    <div class="tool-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/>
+      <span class="tool-name">JavaScript</span>
+    </div>
+    <div class="tool-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress" style="filter: invert(27%) sepia(89%) saturate(400%) hue-rotate(170deg)"/>
+      <span class="tool-name">WordPress</span>
+    </div>
+    <div class="tool-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/>
+      <span class="tool-name">Figma</span>
+    </div>
+    <div class="tool-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/>
+      <span class="tool-name">MySQL</span>
+    </div>
+    <div class="tool-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle"/>
+      <span class="tool-name">Oracle</span>
+    </div>
+    <div class="tool-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"/>
+      <span class="tool-name">Linux</span>
+    </div>
+    <div class="tool-item">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"/>
+      <span class="tool-name">GitHub</span>
+    </div>
+    <div class="tool-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
+        <rect width="48" height="48" rx="8" fill="#1BA0D7"/>
+        <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="Arial">ACF</text>
+      </svg>
+      <span class="tool-name">ACF</span>
+    </div>
+    <div class="tool-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
+        <rect width="48" height="48" rx="8" fill="#E2231A"/>
+        <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Arial">Elementor</text>
+      </svg>
+      <span class="tool-name">Elementor</span>
+    </div>
+    <div class="tool-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
+        <rect width="48" height="48" rx="8" fill="#1BA0D7"/>
+        <text x="50%" y="38%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Arial">Cisco</text>
+        <text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">Networking</text>
+      </svg>
+      <span class="tool-name">Cisco</span>
+    </div>
+    <div class="tool-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
+        <rect width="48" height="48" rx="8" fill="#FF9A00"/>
+        <text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Ai</text>
+        <text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">ILLUSTRATOR</text>
+      </svg>
+      <span class="tool-name">Illustrator</span>
+    </div>
+    <div class="tool-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
+        <rect width="48" height="48" rx="8" fill="#31A8FF"/>
+        <text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Ps</text>
+        <text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">PHOTOSHOP</text>
+      </svg>
+      <span class="tool-name">Photoshop</span>
+    </div>
+    <div class="tool-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
+        <defs>
+          <linearGradient id="canvaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#7D2AE8"/>
+            <stop offset="100%" style="stop-color:#00C4CC"/>
+          </linearGradient>
+        </defs>
+        <rect width="48" height="48" rx="8" fill="url(#canvaGrad)"/>
+        <text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">C</text>
+        <text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">CANVA</text>
+      </svg>
+      <span class="tool-name">Canva</span>
+    </div>
+    <div class="tool-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
+        <rect width="48" height="48" rx="8" fill="#9999FF"/>
+        <text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Pr</text>
+        <text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">PREMIERE</text>
+      </svg>
+      <span class="tool-name">Premiere Pro</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label reveal">Contact</p>
+  <h2 class="section-title reveal reveal-delay-1">Travaillons ensemble</h2>
+  <p class="section-subtitle reveal reveal-delay-2">Une idée de projet, une opportunité ou simplement envie d'échanger ? Je suis disponible.</p>
+  <div class="contact-wrapper reveal reveal-delay-3">
+    <div class="contact-form-box">
+      <div class="contact-field">
+        <input type="text" id="cf-name" name="name" placeholder="Votre nom" required/>
+      </div>
+      <div class="contact-field">
+        <input type="email" id="cf-email" name="email" placeholder="Votre email" required/>
+      </div>
+      <div class="contact-field">
+        <input type="text" id="cf-service" name="service" placeholder="Type de service souhaité (ex: site web, design...)" />
+      </div>
+      <div class="contact-field">
+        <textarea id="cf-message" name="message" rows="4" placeholder="Décrivez votre projet..." required></textarea>
+      </div>
+      <button class="btn btn-primary cf-submit" onclick="sendFormspree()">Envoyer par Email ✉️</button>
+      <button class="btn btn-wa-form" onclick="sendWhatsApp()">Envoyer via WhatsApp 💬</button>
+      <p class="cf-note" id="cf-note"></p>
+    </div>
+    <div class="contact-links-side">
+      <a href="mailto:erickapet69@gmail.com" class="contact-link contact-link-email">✉️ erickapet69@gmail.com</a>
+      <a href="https://www.linkedin.com/in/%C3%A9ric-kapet-1ab31b209" target="_blank" rel="noopener" class="contact-link contact-link-linkedin">💼 LinkedIn</a>
+      <a href="https://wa.me/237657889978" target="_blank" rel="noopener" class="contact-link contact-link-whatsapp">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 KAPET Eric — Ingénieur Informatique &amp; Réseaux · Designer</footer>
+
+<script>
+  // Cursor glow
+  const glow = document.getElementById('glow');
+  document.addEventListener('mousemove', function(e) {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(el) {
+      if (el.isIntersecting) { el.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+  // Gallery thumbnail switcher
+  function switchThumb(thumb) {
+    var card = thumb.closest('.project-card');
+    var mainImg = card.querySelector('.gallery-main img');
+    var thumbs = card.querySelectorAll('.thumb');
+    mainImg.src = thumb.src;
+    thumbs.forEach(function(t) { t.classList.remove('active'); });
+    thumb.classList.add('active');
+  }
+
+  // Lightbox
+  function openLightbox(img) {
+    var lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = img.src;
+    lb.classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Animated counters
+  var counters = document.querySelectorAll('.counter');
+  var counterObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var target = parseInt(el.dataset.target);
+        var current = 0;
+        var step = Math.ceil(target / 40);
+        var timer = setInterval(function() {
+          current += step;
+          if (current >= target) { current = target; clearInterval(timer); }
+          el.textContent = current;
+        }, 40);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(function(c) { counterObserver.observe(c); });
+
+  // Formspree submission
+  async function sendFormspree() {
+    var name = document.getElementById('cf-name').value.trim();
+    var email = document.getElementById('cf-email').value.trim();
+    var service = document.getElementById('cf-service').value.trim();
+    var msg = document.getElementById('cf-message').value.trim();
+    var note = document.getElementById('cf-note');
+    if (!name || !email || !msg) {
+      note.style.color = '#f87171';
+      note.textContent = 'Veuillez remplir les champs obligatoires.';
+      return;
+    }
+    note.style.color = '#9b9890';
+    note.textContent = 'Envoi en cours...';
+    try {
+      var res = await fetch('https://formspree.io/f/mzdwzwyq', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name: name, email: email, service: service, message: msg })
+      });
+      if (res.ok) {
+        note.style.color = '#6ee49a';
+        note.textContent = 'Message envoyé ! Je vous réponds rapidement.';
+        document.getElementById('cf-name').value = '';
+        document.getElementById('cf-email').value = '';
+        document.getElementById('cf-service').value = '';
+        document.getElementById('cf-message').value = '';
+      } else {
+        note.style.color = '#f87171';
+        note.textContent = 'Erreur lors de l`envoi. Veuillez réessayer.';
+      }
+    } catch(e) {
+      note.style.color = '#f87171';
+      note.textContent = 'Erreur réseau. Veuillez réessayer.';
+    }
+  }
+
+  // WhatsApp submission
+  function sendWhatsApp() {
+    var name = document.getElementById('cf-name').value.trim();
+    var service = document.getElementById('cf-service').value.trim();
+    var msg = document.getElementById('cf-message').value.trim();
+    var note = document.getElementById('cf-note');
+    if (!name || !msg) {
+      note.style.color = '#f87171';
+      note.textContent = 'Veuillez renseigner votre nom et votre message.';
+      return;
+    }
+    var text = 'Bonjour KAPET Eric,%0ANom : ' + encodeURIComponent(name) + '%0AService : ' + encodeURIComponent(service || 'Non précisé') + '%0AMessage : ' + encodeURIComponent(msg);
+    window.open('https://wa.me/237657889978?text=' + text, '_blank');
+  }
+</script>
+</body>
+</html>
