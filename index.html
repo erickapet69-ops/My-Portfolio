@@ -713,7 +713,7 @@
       return;
     }
     note.style.color = '#9b9890';
-    note.textContent = 'Envoi en cours...';
+    note.textContent = 'Envoi en cours... Veillez patienter SVP !';
     try {
       var res = await fetch('https://formspree.io/f/mzdwzwyq', {
         method: 'POST',
