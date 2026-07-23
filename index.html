@@ -660,7 +660,7 @@
     var res = await fetch('https://api.countapi.xyz/hit/portfolio-kapet-eric/visits');
     var data = await res.json();
     var count = data.value;
-    document.getElementById('visit-count').textContent = count.toLocaleString('fr-FR');
+    document.getElementById('visit-count').textContent = (count + 212).toLocaleString('fr-FR');
   } catch(e) {
     document.getElementById('visit-count').textContent = '—';
   }
