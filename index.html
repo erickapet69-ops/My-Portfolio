@@ -210,6 +210,8 @@
 
     /* FOOTER */
     footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1.5rem 5%; font-size: 0.78rem; color: #5a5850; }
+    .footer-content { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-visits { color: #8899e0; font-size: 0.78rem; font-weight: 500; }
 
     /* CURSOR EFFECT */
     .cursor-glow { width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(42,82,212,0.07) 0%, transparent 70%); position: fixed; pointer-events: none; z-index: 0; transform: translate(-50%,-50%); transition: left 0.08s, top 0.08s; }
@@ -517,7 +519,12 @@
   </div>
 </section>
 
-<footer>© 2026 KAPET Eric — Technicien Support IT, Designer &amp; Administrateur Système Junior</footer>
+<footer>
+  <div class="footer-content">
+    <span>© 2026 KAPET Eric — Technicien Support IT, Designer &amp; Administrateur Système Junior</span>
+    <span class="footer-visits">👁 <span id="visit-count">...</span> visiteurs</span>
+  </div>
+</footer>
 
 <script>
   // Cursor glow
@@ -648,6 +655,17 @@
 
     document.documentElement.lang = currentLang;
   }
+  async function loadVisitorCount() {
+  try {
+    var res = await fetch('https://api.countapi.xyz/hit/portfolio-kapet-eric/visits');
+    var data = await res.json();
+    var count = data.value;
+    document.getElementById('visit-count').textContent = count.toLocaleString('fr-FR');
+  } catch(e) {
+    document.getElementById('visit-count').textContent = '—';
+  }
+}
+loadVisitorCount();
 </script>
 </body>
 </html>
