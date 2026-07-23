@@ -90,35 +90,16 @@
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
     .btn-cv { background: var(--off-white); color: var(--dark); border: 1.5px solid var(--light); }
     .btn-cv:hover { background: var(--light); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
-    
 
     /* PHOTO */
     .hero-visual { display: flex; justify-content: center; align-items: center; animation: fadeInRight 1s 0.4s ease both; }
     @keyframes fadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
     .avatar-block { position: relative; width: 320px; height: 400px; }
-    .avatar-bg {
-      position: absolute; inset: 0;
-      background: var(--off-white);
-      border-radius: 200px 200px 160px 160px;
-      border: 1px solid var(--light);
-    }
-    .avatar-photo {
-      position: absolute; inset: 0;
-      border-radius: 200px 200px 160px 160px;
-      overflow: hidden;
-    }
-    .avatar-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: top center;
-      transition: transform 0.5s ease;
-    }
+    .avatar-bg { position: absolute; inset: 0; background: var(--off-white); border-radius: 200px 200px 160px 160px; border: 1px solid var(--light); }
+    .avatar-photo { position: absolute; inset: 0; border-radius: 200px 200px 160px 160px; overflow: hidden; }
+    .avatar-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s ease; }
     .avatar-photo:hover img { transform: scale(1.04); }
-    .badge-floating {
-      position: absolute; background: white; border: 1px solid var(--light);
-      border-radius: 8px; padding: 8px 14px; font-size: 0.78rem; font-weight: 500;
-      color: var(--dark); box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      display: flex; align-items: center; gap: 6px; white-space: nowrap;
-    }
+    .badge-floating { position: absolute; background: white; border: 1px solid var(--light); border-radius: 8px; padding: 8px 14px; font-size: 0.78rem; font-weight: 500; color: var(--dark); box-shadow: 0 4px 16px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
     .badge-1 { top: 30px; right: -14px; animation: float 3s ease-in-out infinite; }
     .badge-2 { bottom: 50px; left: -24px; animation: float 3s ease-in-out infinite 1.5s; }
     @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
@@ -142,54 +123,18 @@
     /* SKILLS */
     #skills { background: var(--white); }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
-    .skill-card {
-      border: 1px solid var(--light); border-radius: 10px; padding: 1.4rem 1.6rem;
-      background: white; display: flex; align-items: flex-start; gap: 1rem;
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-    }
+    .skill-card { border: 1px solid var(--light); border-radius: 10px; padding: 1.4rem 1.6rem; background: white; display: flex; align-items: flex-start; gap: 1rem; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
     .skill-card:hover { border-color: var(--accent); box-shadow: 0 4px 18px rgba(42,82,212,0.08); transform: translateY(-2px); }
     .skill-icon { width: 38px; height: 38px; border-radius: 8px; background: var(--accent-soft); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; }
     .skill-info { flex: 1; }
     .skill-name { font-weight: 500; color: var(--dark); font-size: 0.92rem; margin-bottom: 0.25rem; }
     .skill-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+    .skill-list { font-size: 0.78rem; color: var(--muted); line-height: 1.7; padding-left: 1rem; margin: 0; }
+    .skill-list li { margin-bottom: 0.2rem; }
 
     /* PROJECTS */
-    #projects { background: var(--off-white); }
-    .projects-empty { border: 1.5px dashed var(--mid); border-radius: 14px; padding: 4rem 2rem; text-align: center; }
-    .projects-empty-icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.4; }
-    .projects-empty p { color: var(--muted); font-size: 0.95rem; max-width: 380px; margin: 0 auto; line-height: 1.7; }
-    .projects-empty strong { color: var(--dark); font-weight: 500; }
-
-    /* CONTACT */
-    #contact { background: var(--dark); text-align: center; }
-    #contact .section-label { color: #8899e0; }
-    #contact .section-title { color: var(--white); margin-bottom: 0.6rem; }
-    #contact .section-subtitle { color: #9b9890; margin: 0 auto 3rem; }
-    .contact-links { display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%; max-width: 420px; margin: 0 auto; }
-    .contact-link { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 15px 24px; border-radius: 10px; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: all 0.2s; width: 100%; }
-    .contact-link-email { background: var(--accent); color: white; }
-    .contact-link-email:hover { background: #1e3fb5; transform: translateY(-2px); }
-    .contact-link-linkedin { background: rgba(255,255,255,0.07); color: #d0cfc9; border: 1px solid rgba(255,255,255,0.1); }
-    .contact-link-linkedin:hover { background: rgba(255,255,255,0.13); color: white; }
-    .contact-link-github { background: rgba(255,255,255,0.07); color: #d0cfc9; border: 1px solid rgba(255,255,255,0.1); }
-    .contact-link-github:hover { background: rgba(255,255,255,0.13); color: white; }
-    .contact-link-whatsapp { background: #25D366; color: #ffffff; border: none; }
-    .contact-link-whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); }
-
-    /* FOOTER */
-    footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1.5rem 5%; font-size: 0.78rem; color: #5a5850; }
-
-    /* CURSOR EFFECT */
-    .cursor-glow { width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(42,82,212,0.07) 0%, transparent 70%); position: fixed; pointer-events: none; z-index: 0; transform: translate(-50%,-50%); transition: left 0.08s, top 0.08s; }
-
-    /* PROJECT CARD */
     #projects { background: var(--white); }
-    .project-card {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
-      background: var(--off-white); border: 1px solid var(--light);
-      border-radius: 16px; padding: 2rem; margin-bottom: 2rem;
-      align-items: start;
-    }
+    .project-card { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: var(--off-white); border: 1px solid var(--light); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; align-items: start; }
     .gallery-main { border-radius: 10px; overflow: hidden; margin-bottom: 0.8rem; cursor: zoom-in; }
     .gallery-main img { width: 100%; height: 280px; object-fit: cover; object-position: top; display: block; transition: transform 0.3s; }
     .gallery-main img:hover { transform: scale(1.02); }
@@ -212,21 +157,13 @@
     .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 10px; object-fit: contain; }
     .lightbox-close { position: fixed; top: 20px; right: 24px; background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; z-index: 1000; }
 
-    @media (max-width: 768px) {
-      .project-card { grid-template-columns: 1fr; }
-    }
-
     /* STAT SUFFIX */
     .stat-suffix { font-family: var(--font-display); font-size: 2rem; color: var(--accent); line-height: 1; }
 
     /* SERVICES */
     #services { background: var(--white); }
     .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.4rem; }
-    .service-card {
-      border: 1px solid var(--light); border-radius: 12px; padding: 2rem 1.8rem;
-      background: white; position: relative; overflow: hidden;
-      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-    }
+    .service-card { border: 1px solid var(--light); border-radius: 12px; padding: 2rem 1.8rem; background: white; position: relative; overflow: hidden; transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s; }
     .service-card:hover { border-color: var(--accent); box-shadow: 0 8px 30px rgba(42,82,212,0.1); transform: translateY(-3px); }
     .service-num { font-family: var(--font-display); font-size: 3rem; color: var(--accent-soft); line-height: 1; margin-bottom: 0.5rem; font-weight: 700; }
     .service-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
@@ -238,26 +175,20 @@
     /* TOOLS */
     #tools { background: var(--off-white); }
     .tools-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .tool-item {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 0.4rem; background: white; border: 1px solid var(--light); border-radius: 12px;
-      padding: 1.2rem 1.4rem; min-width: 90px;
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-      cursor: default;
-    }
+    .tool-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; background: white; border: 1px solid var(--light); border-radius: 12px; padding: 1.2rem 1.4rem; min-width: 90px; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; cursor: default; }
     .tool-item:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(42,82,212,0.1); }
     .tool-icon { font-size: 1.6rem; }
     .tool-item img, .tool-item svg { width: 40px; height: 40px; object-fit: contain; }
     .tool-name { font-size: 0.75rem; font-weight: 500; color: var(--dark); text-align: center; }
 
-    /* CONTACT FORM */
+    /* CONTACT */
+    #contact { background: var(--dark); text-align: center; }
+    #contact .section-label { color: #8899e0; }
+    #contact .section-title { color: var(--white); margin-bottom: 0.6rem; }
+    #contact .section-subtitle { color: #9b9890; margin: 0 auto 3rem; }
     .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 900px; margin: 0 auto; text-align: left; }
     .contact-form-box { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-field input, .contact-field textarea {
-      width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 8px; padding: 12px 16px; color: #e0ddd8; font-family: var(--font-body);
-      font-size: 0.88rem; outline: none; transition: border-color 0.2s; resize: none;
-    }
+    .contact-field input, .contact-field textarea { width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 12px 16px; color: #e0ddd8; font-family: var(--font-body); font-size: 0.88rem; outline: none; transition: border-color 0.2s; resize: none; }
     .contact-field input::placeholder, .contact-field textarea::placeholder { color: #6a6860; }
     .contact-field input:focus, .contact-field textarea:focus { border-color: var(--accent); }
     .cf-submit { width: 100%; justify-content: center; margin-top: 0.5rem; }
@@ -265,13 +196,24 @@
     .btn-wa-form { background: #25D366; color: white; border: none; width: 100%; justify-content: center; }
     .btn-wa-form:hover { background: #1ebe5d; transform: translateY(-2px); }
     .contact-links-side { display: flex; flex-direction: column; gap: 1rem; justify-content: center; }
+    .contact-links { display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%; max-width: 420px; margin: 0 auto; }
+    .contact-link { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 15px 24px; border-radius: 10px; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: all 0.2s; width: 100%; }
+    .contact-link-email { background: var(--accent); color: white; }
+    .contact-link-email:hover { background: #1e3fb5; transform: translateY(-2px); }
+    .contact-link-linkedin { background: rgba(255,255,255,0.07); color: #d0cfc9; border: 1px solid rgba(255,255,255,0.1); }
+    .contact-link-linkedin:hover { background: rgba(255,255,255,0.13); color: white; }
+    .contact-link-github { background: rgba(255,255,255,0.07); color: #d0cfc9; border: 1px solid rgba(255,255,255,0.1); }
+    .contact-link-github:hover { background: rgba(255,255,255,0.13); color: white; }
+    .contact-link-whatsapp { background: #25D366; color: #ffffff; border: none; }
+    .contact-link-whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 1.5rem 5%; font-size: 0.78rem; color: #5a5850; }
+
+    /* CURSOR EFFECT */
+    .cursor-glow { width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(42,82,212,0.07) 0%, transparent 70%); position: fixed; pointer-events: none; z-index: 0; transform: translate(-50%,-50%); transition: left 0.08s, top 0.08s; }
 
     /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .contact-wrapper { grid-template-columns: 1fr; }
-    }
-
-    /* RESPONSIVE (original) */
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; padding-top: 100px; text-align: center; }
       .hero-desc { margin: 0 auto 2.5rem; }
@@ -280,6 +222,8 @@
       .avatar-block { width: 240px; height: 300px; }
       #about { grid-template-columns: 1fr; gap: 2.5rem; }
       .nav-links { display: none; }
+      .project-card { grid-template-columns: 1fr; }
+      .contact-wrapper { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -291,36 +235,35 @@
 <nav>
   <span class="nav-logo">KAPET Eric</span>
   <ul class="nav-links">
-    <li><a href="#about">À propos</a></li>
-    <li><a href="#skills">Compétences</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Projets</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about" data-fr="À propos" data-en="About">À propos</a></li>
+    <li><a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a></li>
+    <li><a href="#services" data-fr="Services" data-en="Services">Services</a></li>
+    <li><a href="#projects" data-fr="Projets" data-en="Projects">Projets</a></li>
+    <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
   </ul>
-    <button class="lang-btn" onclick="toggleLang()" id="lang-btn">🇬🇧 EN</button>
+  <button class="lang-btn" onclick="toggleLang()" id="lang-btn">🇬🇧 EN</button>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <span class="hero-eyebrow">Technicien Support IT, Designer &amp; Administrateur Système Junior</span>
+    <span class="hero-eyebrow" data-fr="Technicien Support IT, Designer &amp; Administrateur Système Junior" data-en="IT Support Technician, Designer &amp; Junior System Administrator">Technicien Support IT, Designer &amp; Administrateur Système Junior</span>
     <h1 class="hero-name">KAPET<br><em>Eric</em></h1>
-    <p class="hero-desc">Je mets mes compétences au service des entreprises pour assurer la disponibilité, la sécurité et la performance de leurs infrastructures informatiques. Mes interventions couvrent l'assistance aux utilisateurs, la maintenance des équipements, l'administration des systèmes et réseaux, la gestion des incidents, la sécurisation des environnements informatiques ainsi que la gestion des sauvegardes et des accès utilisateurs.
-    <p class="hero-desc">Grâce à une approche méthodique et orientée résolution de problèmes, je contribue à garantir la continuité des activités et l'efficacité des outils numériques au sein des organisations. J'aime également transformer des idées complexes en solutions simples, fonctionnelles et visuellement impactantes.
+    <p class="hero-desc" data-fr="Je mets mes compétences au service des entreprises pour assurer la disponibilité, la sécurité et la performance de leurs infrastructures informatiques. Mes interventions couvrent l'assistance aux utilisateurs, la maintenance des équipements, l'administration des systèmes et réseaux, la gestion des incidents, la sécurisation des environnements informatiques ainsi que la gestion des sauvegardes et des accès utilisateurs." data-en="I put my skills at the service of companies to ensure the availability, security and performance of their IT infrastructures. My work covers user support, equipment maintenance, systems and network administration, incident management, IT environment security, and backup and user access management.">Je mets mes compétences au service des entreprises pour assurer la disponibilité, la sécurité et la performance de leurs infrastructures informatiques. Mes interventions couvrent l'assistance aux utilisateurs, la maintenance des équipements, l'administration des systèmes et réseaux, la gestion des incidents, la sécurisation des environnements informatiques ainsi que la gestion des sauvegardes et des accès utilisateurs.</p>
+    <p class="hero-desc" data-fr="Grâce à une approche méthodique et orientée résolution de problèmes, je contribue à garantir la continuité des activités et l'efficacité des outils numériques au sein des organisations. J'aime également transformer des idées complexes en solutions simples, fonctionnelles et visuellement impactantes." data-en="Through a methodical, problem-solving approach, I help ensure business continuity and the effectiveness of digital tools within organizations. I also enjoy turning complex ideas into simple, functional and visually impactful solutions.">Grâce à une approche méthodique et orientée résolution de problèmes, je contribue à garantir la continuité des activités et l'efficacité des outils numériques au sein des organisations. J'aime également transformer des idées complexes en solutions simples, fonctionnelles et visuellement impactantes.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary">Me contacter</a>
-      <a href="#skills" class="btn btn-outline">Voir mes compétences</a>
-      <a href="CV_Kapet_Eric.pdf" download="CV_Kapet_Eric.pdf" class="btn btn-cv">⬇ Télécharger mon CV</a>
+      <a href="#contact" class="btn btn-primary" data-fr="Me contacter" data-en="Contact me">Me contacter</a>
+      <a href="#skills" class="btn btn-outline" data-fr="Voir mes compétences" data-en="View my skills">Voir mes compétences</a>
+      <a href="CV_Kapet_Eric.pdf" download="CV_Kapet_Eric.pdf" class="btn btn-cv" data-fr="⬇ Télécharger mon CV" data-en="⬇ Download my CV">⬇ Télécharger mon CV</a>
     </div>
   </div>
-
   <div class="hero-visual">
     <div class="avatar-block">
       <div class="avatar-bg"></div>
       <div class="avatar-photo">
         <img src="images/photo.jpeg" alt="KAPET Eric"/>
       </div>
-      <div class="badge-floating badge-1"><span class="badge-dot"></span> Support Informatique & Helpdesk</div>
+      <div class="badge-floating badge-1"><span class="badge-dot"></span> Support Informatique &amp; Helpdesk</div>
       <div class="badge-floating badge-2"><span class="badge-dot"></span> Design &amp; Dev</div>
     </div>
   </div>
@@ -329,118 +272,118 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="about-text reveal">
-    <p class="section-label">À propos</p>
-    <h2 class="section-title">Technique<br>et créativité,<br><em>réunis.</em></h2>
-    <p>Transformer les problèmes techniques en solutions fiables.</p>
-    <p>Informaticien polyvalent, je mets mes compétences au service des organisations pour assurer la disponibilité, la sécurité et la performance de leurs systèmes d'information. Du support utilisateur à l'administration réseau et en passant par la maintenance des équipements, j'apporte des solutions concrètes aux défis du quotidien.</p>
-    <p>Mon parcours en graphisme et communication visuelle me permet également d'allier expertise technique et créativité afin de concevoir des projets à forte valeur ajoutée.</p>
+    <p class="section-label" data-fr="À propos" data-en="About">À propos</p>
+    <h2 class="section-title" data-fr="Technique<br>et créativité,<br><em>réunis.</em>" data-en="Technical<br>and creativity,<br><em>united.</em>">Technique<br>et créativité,<br><em>réunis.</em></h2>
+    <p data-fr="Transformer les problèmes techniques en solutions fiables." data-en="Turning technical problems into reliable solutions.">Transformer les problèmes techniques en solutions fiables.</p>
+    <p data-fr="Informaticien polyvalent, je mets mes compétences au service des organisations pour assurer la disponibilité, la sécurité et la performance de leurs systèmes d'information. Du support utilisateur à l'administration réseau et en passant par la maintenance des équipements, j'apporte des solutions concrètes aux défis du quotidien." data-en="A versatile IT professional, I put my skills at the service of organizations to ensure the availability, security and performance of their information systems. From user support to network administration and equipment maintenance, I provide concrete solutions to everyday challenges.">Informaticien polyvalent, je mets mes compétences au service des organisations pour assurer la disponibilité, la sécurité et la performance de leurs systèmes d'information. Du support utilisateur à l'administration réseau et en passant par la maintenance des équipements, j'apporte des solutions concrètes aux défis du quotidien.</p>
+    <p data-fr="Mon parcours en graphisme et communication visuelle me permet également d'allier expertise technique et créativité afin de concevoir des projets à forte valeur ajoutée." data-en="My background in graphic design and visual communication also allows me to combine technical expertise and creativity to design high-value projects.">Mon parcours en graphisme et communication visuelle me permet également d'allier expertise technique et créativité afin de concevoir des projets à forte valeur ajoutée.</p>
   </div>
   <div class="about-stats">
     <div class="stat-card reveal reveal-delay-1">
       <span class="stat-number counter" data-target="2">0</span><span class="stat-suffix">+</span>
-      <span class="stat-label">Années d'expérience</span>
+      <span class="stat-label" data-fr="Années d'expérience" data-en="Years of experience">Années d'expérience</span>
     </div>
     <div class="stat-card reveal reveal-delay-2">
       <span class="stat-number counter" data-target="3">0</span>
-      <span class="stat-label">Projets réalisés</span>
+      <span class="stat-label" data-fr="Projets réalisés" data-en="Completed projects">Projets réalisés</span>
     </div>
     <div class="stat-card reveal reveal-delay-3">
       <span class="stat-number counter" data-target="89">0</span><span class="stat-suffix">%</span>
-      <span class="stat-label">Clients satisfaits</span>
+      <span class="stat-label" data-fr="Clients satisfaits" data-en="Satisfied clients">Clients satisfaits</span>
     </div>
     <div class="stat-card reveal reveal-delay-4">
       <span class="stat-number">7</span>
-      <span class="stat-label">Services proposés</span>
+      <span class="stat-label" data-fr="Services proposés" data-en="Services offered">Services proposés</span>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- SKILLS -->
 <section id="skills">
-  <p class="section-label reveal">Compétences</p>
-  <h2 class="section-title reveal reveal-delay-1">Ce que je maîtrise</h2>
-  <p class="section-subtitle reveal reveal-delay-2">Un ensemble de compétences complémentaires couvrant l'informatique, les réseaux, le développement et le design.</p>
+  <p class="section-label reveal" data-fr="Compétences" data-en="Skills">Compétences</p>
+  <h2 class="section-title reveal reveal-delay-1" data-fr="Ce que je maîtrise" data-en="What I master">Ce que je maîtrise</h2>
+  <p class="section-subtitle reveal reveal-delay-2" data-fr="Un ensemble de compétences complémentaires couvrant l'informatique, les réseaux, le développement et le design." data-en="A set of complementary skills covering IT, networks, development and design.">Un ensemble de compétences complémentaires couvrant l'informatique, les réseaux, le développement et le design.</p>
   <div class="skills-grid">
     <div class="skill-card reveal reveal-delay-1">
       <div class="skill-icon">🖥️</div>
       <div class="skill-info">
-        <p class="skill-name">Support Informatique et Helpdesk</p>
+        <p class="skill-name" data-fr="Support Informatique et Helpdesk" data-en="IT Support and Helpdesk">Support Informatique et Helpdesk</p>
         <ul class="skill-list">
-          <li>Assistance technique aux utilisateurs sur site et à distance niveau 1 et 2.</li>
-          <li>Prise en charge, analyse et résolution des incidents matériels et logiciels.</li>
-          <li>Installation, configuration et maintenance des postes de travail.</li>
-          <li>Accompagnement et formation des utilisateurs sur les outils informatiques.</li>
+          <li data-fr="Assistance technique aux utilisateurs sur site et à distance niveau 1 et 2." data-en="Technical assistance to users on-site and remotely, levels 1 and 2.">Assistance technique aux utilisateurs sur site et à distance niveau 1 et 2.</li>
+          <li data-fr="Prise en charge, analyse et résolution des incidents matériels et logiciels." data-en="Handling, analysis and resolution of hardware and software incidents.">Prise en charge, analyse et résolution des incidents matériels et logiciels.</li>
+          <li data-fr="Installation, configuration et maintenance des postes de travail." data-en="Installation, configuration and maintenance of workstations.">Installation, configuration et maintenance des postes de travail.</li>
+          <li data-fr="Accompagnement et formation des utilisateurs sur les outils informatiques." data-en="User guidance and training on IT tools.">Accompagnement et formation des utilisateurs sur les outils informatiques.</li>
         </ul>
       </div>
     </div>
     <div class="skill-card reveal reveal-delay-2">
       <div class="skill-icon">🔧</div>
       <div class="skill-info">
-        <p class="skill-name">Maintenance Hardware et Software</p>
+        <p class="skill-name" data-fr="Maintenance Hardware et Software" data-en="Hardware and Software Maintenance">Maintenance Hardware et Software</p>
         <ul class="skill-list">
-          <li>Diagnostic, réparation et entretien des équipements informatiques.</li>
-          <li>Installation et mise à jour des systèmes d'exploitation et logiciels.</li>
-          <li>Remplacement et optimisation des composants matériels.</li>
-          <li>Prévention des pannes et amélioration des performances des équipements.</li>
+          <li data-fr="Diagnostic, réparation et entretien des équipements informatiques." data-en="Diagnosis, repair and maintenance of IT equipment.">Diagnostic, réparation et entretien des équipements informatiques.</li>
+          <li data-fr="Installation et mise à jour des systèmes d'exploitation et logiciels." data-en="Installation and updating of operating systems and software.">Installation et mise à jour des systèmes d'exploitation et logiciels.</li>
+          <li data-fr="Remplacement et optimisation des composants matériels." data-en="Replacement and optimization of hardware components.">Remplacement et optimisation des composants matériels.</li>
+          <li data-fr="Prévention des pannes et amélioration des performances des équipements." data-en="Failure prevention and equipment performance improvement.">Prévention des pannes et amélioration des performances des équipements.</li>
         </ul>
       </div>
     </div>
     <div class="skill-card reveal reveal-delay-3">
       <div class="skill-icon">🌐</div>
       <div class="skill-info">
-        <p class="skill-name">Administration Systèmes et Réseaux</p>
+        <p class="skill-name" data-fr="Administration Systèmes et Réseaux" data-en="Systems and Network Administration">Administration Systèmes et Réseaux</p>
         <ul class="skill-list">
-          <li>Installation, configuration et administration des serveurs Windows.</li>
-          <li>Gestion des utilisateurs, groupes et droits d'accès.</li>
-          <li>Configuration et supervision des réseaux locaux (LAN), Wi-Fi et équipements réseau.</li>
-          <li>Surveillance de la disponibilité et des performances des infrastructures informatiques.</li>
+          <li data-fr="Installation, configuration et administration des serveurs Windows." data-en="Installation, configuration and administration of Windows servers.">Installation, configuration et administration des serveurs Windows.</li>
+          <li data-fr="Gestion des utilisateurs, groupes et droits d'accès." data-en="Management of users, groups and access rights.">Gestion des utilisateurs, groupes et droits d'accès.</li>
+          <li data-fr="Configuration et supervision des réseaux locaux (LAN), Wi-Fi et équipements réseau." data-en="Configuration and supervision of local networks (LAN), Wi-Fi and network equipment.">Configuration et supervision des réseaux locaux (LAN), Wi-Fi et équipements réseau.</li>
+          <li data-fr="Surveillance de la disponibilité et des performances des infrastructures informatiques." data-en="Monitoring the availability and performance of IT infrastructures.">Surveillance de la disponibilité et des performances des infrastructures informatiques.</li>
         </ul>
       </div>
     </div>
     <div class="skill-card reveal reveal-delay-4">
       <div class="skill-icon">🚨</div>
       <div class="skill-info">
-        <p class="skill-name">Gestion des Incidents IT</p>
+        <p class="skill-name" data-fr="Gestion des Incidents IT" data-en="IT Incident Management">Gestion des Incidents IT</p>
         <ul class="skill-list">
-          <li>Réception, suivi et traitement des incidents informatiques.</li>
-          <li>Analyse des causes et mise en œuvre des solutions correctives.</li>
-          <li>Gestion des priorités selon l'impact sur l'activité de l'entreprise.</li>
-          <li>Documentation des incidents et des procédures de résolution.</li>
+          <li data-fr="Réception, suivi et traitement des incidents informatiques." data-en="Receipt, tracking and handling of IT incidents.">Réception, suivi et traitement des incidents informatiques.</li>
+          <li data-fr="Analyse des causes et mise en œuvre des solutions correctives." data-en="Root cause analysis and implementation of corrective solutions.">Analyse des causes et mise en œuvre des solutions correctives.</li>
+          <li data-fr="Gestion des priorités selon l'impact sur l'activité de l'entreprise." data-en="Priority management based on business impact.">Gestion des priorités selon l'impact sur l'activité de l'entreprise.</li>
+          <li data-fr="Documentation des incidents et des procédures de résolution." data-en="Documentation of incidents and resolution procedures.">Documentation des incidents et des procédures de résolution.</li>
         </ul>
       </div>
     </div>
     <div class="skill-card reveal reveal-delay-5">
       <div class="skill-icon">🔍</div>
       <div class="skill-info">
-        <p class="skill-name">Diagnostic et Résolution de Problèmes</p>
+        <p class="skill-name" data-fr="Diagnostic et Résolution de Problèmes" data-en="Diagnosis and Problem Solving">Diagnostic et Résolution de Problèmes</p>
         <ul class="skill-list">
-          <li>Identification rapide des dysfonctionnements matériels, logiciels et réseaux.</li>
-          <li>Analyse approfondie des causes racines des incidents.</li>
-          <li>Mise en œuvre de solutions durables pour réduire les interruptions de service.</li>
-          <li>Réalisation de tests et validation des actions correctives.</li>
+          <li data-fr="Identification rapide des dysfonctionnements matériels, logiciels et réseaux." data-en="Rapid identification of hardware, software and network failures.">Identification rapide des dysfonctionnements matériels, logiciels et réseaux.</li>
+          <li data-fr="Analyse approfondie des causes racines des incidents." data-en="In-depth analysis of incident root causes.">Analyse approfondie des causes racines des incidents.</li>
+          <li data-fr="Mise en œuvre de solutions durables pour réduire les interruptions de service." data-en="Implementation of lasting solutions to reduce service interruptions.">Mise en œuvre de solutions durables pour réduire les interruptions de service.</li>
+          <li data-fr="Réalisation de tests et validation des actions correctives." data-en="Conducting tests and validating corrective actions.">Réalisation de tests et validation des actions correctives.</li>
         </ul>
       </div>
     </div>
     <div class="skill-card reveal reveal-delay-6">
       <div class="skill-icon">🔒</div>
       <div class="skill-info">
-        <p class="skill-name">Sécurité Informatique de Base</p>
+        <p class="skill-name" data-fr="Sécurité Informatique de Base" data-en="Basic IT Security">Sécurité Informatique de Base</p>
         <ul class="skill-list">
-          <li>Gestion des antivirus, pare-feu et mises à jour de sécurité.</li>
-          <li>Sensibilisation des utilisateurs aux risques informatiques.</li>
-          <li>Contrôle des accès et protection des données de l'entreprise.</li>
+          <li data-fr="Gestion des antivirus, pare-feu et mises à jour de sécurité." data-en="Management of antivirus, firewalls and security updates.">Gestion des antivirus, pare-feu et mises à jour de sécurité.</li>
+          <li data-fr="Sensibilisation des utilisateurs aux risques informatiques." data-en="Raising user awareness of IT risks.">Sensibilisation des utilisateurs aux risques informatiques.</li>
+          <li data-fr="Contrôle des accès et protection des données de l'entreprise." data-en="Access control and protection of company data.">Contrôle des accès et protection des données de l'entreprise.</li>
         </ul>
       </div>
     </div>
     <div class="skill-card reveal reveal-delay-1">
       <div class="skill-icon">💾</div>
       <div class="skill-info">
-        <p class="skill-name">Gestion des Sauvegardes et Accès Utilisateurs</p>
+        <p class="skill-name" data-fr="Gestion des Sauvegardes et Accès Utilisateurs" data-en="Backup and User Access Management">Gestion des Sauvegardes et Accès Utilisateurs</p>
         <ul class="skill-list">
-          <li>Mise en place et supervision des stratégies de sauvegarde des données.</li>
-          <li>Vérification et restauration des données en cas de besoin.</li>
-          <li>Création, modification et suppression des comptes utilisateurs.</li>
-          <li>Gestion des autorisations et des niveaux d'accès aux ressources informatiques.</li>
+          <li data-fr="Mise en place et supervision des stratégies de sauvegarde des données." data-en="Implementation and supervision of data backup strategies.">Mise en place et supervision des stratégies de sauvegarde des données.</li>
+          <li data-fr="Vérification et restauration des données en cas de besoin." data-en="Verification and restoration of data when needed.">Vérification et restauration des données en cas de besoin.</li>
+          <li data-fr="Création, modification et suppression des comptes utilisateurs." data-en="Creation, modification and deletion of user accounts.">Création, modification et suppression des comptes utilisateurs.</li>
+          <li data-fr="Gestion des autorisations et des niveaux d'accès aux ressources informatiques." data-en="Management of permissions and access levels to IT resources.">Gestion des autorisations et des niveaux d'accès aux ressources informatiques.</li>
         </ul>
       </div>
     </div>
@@ -449,14 +392,14 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <p class="section-label reveal">Projets</p>
-  <h2 class="section-title reveal reveal-delay-1">Mes réalisations</h2>
-  <p class="section-subtitle reveal reveal-delay-2">Des projets concrets réalisés avec passion, de la conception à la mise en ligne.</p>
+  <p class="section-label reveal" data-fr="Projets" data-en="Projects">Projets</p>
+  <h2 class="section-title reveal reveal-delay-1" data-fr="Mes réalisations" data-en="My work">Mes réalisations</h2>
+  <p class="section-subtitle reveal reveal-delay-2" data-fr="Des projets concrets réalisés avec passion, de la conception à la mise en ligne." data-en="Concrete projects carried out with passion, from design to launch.">Des projets concrets réalisés avec passion, de la conception à la mise en ligne.</p>
 
   <div class="project-card reveal">
     <div class="project-gallery">
       <div class="gallery-main">
-        <img src="images/lisiane1.jpeg" alt="Lisiane Cosmétique - Hero" class="gallery-img active" onclick="openLightbox(this)"/>
+        <img src="images/lisiane1.jpeg" alt="Lisiane Cosmétique" onclick="openLightbox(this)"/>
       </div>
       <div class="gallery-thumbs">
         <img src="images/lisiane1.jpeg" alt="Vue 1" class="thumb active" onclick="switchThumb(this)"/>
@@ -468,15 +411,15 @@
     <div class="project-info">
       <div class="project-header">
         <span class="project-num">01</span>
-        <span class="project-type">Site Web · Boutique en ligne</span>
+        <span class="project-type" data-fr="Site Web · Boutique en ligne" data-en="Website · Online Store">Site Web · Boutique en ligne</span>
       </div>
       <h3 class="project-title">Lisiane Cosmétique</h3>
-      <p class="project-desc">Site vitrine et boutique en ligne pour une marque de cosmétiques de luxe africain. Design élégant en vert et doré, avec catalogue produits, services, témoignages clients et formulaire de contact. Un projet complet alliant esthétique raffinée et expérience utilisateur soignée.</p>
+      <p class="project-desc" data-fr="Site vitrine et boutique en ligne pour une marque de cosmétiques de luxe africain. Design élégant en vert et doré, avec catalogue produits, services, témoignages clients et formulaire de contact. Un projet complet alliant esthétique raffinée et expérience utilisateur soignée." data-en="Showcase website and online store for an African luxury cosmetics brand. Elegant green and gold design, with product catalog, services, customer reviews and contact form. A complete project combining refined aesthetics and careful user experience.">Site vitrine et boutique en ligne pour une marque de cosmétiques de luxe africain. Design élégant en vert et doré, avec catalogue produits, services, témoignages clients et formulaire de contact. Un projet complet alliant esthétique raffinée et expérience utilisateur soignée.</p>
       <div class="project-stack">
         <span>HTML</span><span>CSS</span><span>JavaScript</span><span>WordPress</span><span>Elementor</span><span>ACF</span><span>WP Forms</span>
       </div>
       <div class="project-links">
-        <span class="project-status">🔒 Lien privé — non disponible publiquement      https://lisiane-cos.vercel.app/</span>
+        <span class="project-status" data-fr="🔒 Lien privé — non disponible publiquement      https://lisiane-cos.vercel.app/" data-en="🔒 Private link — not publicly available      https://lisiane-cos.vercel.app/">🔒 Lien privé — non disponible publiquement      https://lisiane-cos.vercel.app/</span>
       </div>
     </div>
   </div>
@@ -484,7 +427,7 @@
   <div class="project-card reveal">
     <div class="project-gallery">
       <div class="gallery-main">
-        <img src="images/eng1.jpeg" alt="ENG Fashion - Hero" class="gallery-img active" onclick="openLightbox(this)"/>
+        <img src="images/eng1.jpeg" alt="ENG Fashion" onclick="openLightbox(this)"/>
       </div>
       <div class="gallery-thumbs">
         <img src="images/eng1.jpeg" alt="Vue 1" class="thumb active" onclick="switchThumb(this)"/>
@@ -496,19 +439,18 @@
     <div class="project-info">
       <div class="project-header">
         <span class="project-num">02</span>
-        <span class="project-type">Site Web · Portfolio & Boutique</span>
+        <span class="project-type" data-fr="Site Web · Portfolio &amp; Boutique" data-en="Website · Portfolio &amp; Store">Site Web · Portfolio &amp; Boutique</span>
       </div>
       <h3 class="project-title">ENG Fashion</h3>
-      <p class="project-desc">Portfolio et boutique en ligne pour Ladeng Derpeng Lorie, styliste modéliste tchadienne basée à N'Djamena. Design raffiné aux tons terre de sienne et brun chocolat, mettant en valeur la haute couture africaine. Le site présente les créations, les services, un processus de commande et un formulaire de contact complet.</p>
+      <p class="project-desc" data-fr="Portfolio et boutique en ligne pour Ladeng Derpeng Lorie, styliste modéliste tchadienne basée à N'Djamena. Design raffiné aux tons terre de sienne et brun chocolat, mettant en valeur la haute couture africaine. Le site présente les créations, les services, un processus de commande et un formulaire de contact complet." data-en="Portfolio and online store for Ladeng Derpeng Lorie, a Chadian fashion designer based in N'Djamena. Refined design in sienna and chocolate brown tones, showcasing African haute couture. The site presents creations, services, an ordering process and a complete contact form.">Portfolio et boutique en ligne pour Ladeng Derpeng Lorie, styliste modéliste tchadienne basée à N'Djamena. Design raffiné aux tons terre de sienne et brun chocolat, mettant en valeur la haute couture africaine. Le site présente les créations, les services, un processus de commande et un formulaire de contact complet.</p>
       <div class="project-stack">
         <span>HTML</span><span>CSS</span><span>JavaScript</span><span>WordPress</span><span>Elementor</span><span>ACF</span><span>WP Forms</span>
       </div>
       <div class="project-links">
-        <span class="project-status">🔒 Lien privé — non disponible publiquement      https://portfolio-ladeng-lorie.vercel.app/</span>
+        <span class="project-status" data-fr="🔒 Lien privé — non disponible publiquement      https://portfolio-ladeng-lorie.vercel.app/" data-en="🔒 Private link — not publicly available      https://portfolio-ladeng-lorie.vercel.app/">🔒 Lien privé — non disponible publiquement      https://portfolio-ladeng-lorie.vercel.app/</span>
       </div>
     </div>
   </div>
-
 </section>
 
 <!-- LIGHTBOX -->
@@ -519,130 +461,50 @@
 
 <!-- TOOLS -->
 <section id="tools">
-  <p class="section-label reveal">Outils</p>
-  <h2 class="section-title reveal reveal-delay-1">Ma boîte à outils</h2>
-  <p class="section-subtitle reveal reveal-delay-2">Les technologies et logiciels que j'utilise au quotidien pour livrer vos résultats de qualité.</p>
+  <p class="section-label reveal" data-fr="Outils" data-en="Tools">Outils</p>
+  <h2 class="section-title reveal reveal-delay-1" data-fr="Ma boîte à outils" data-en="My toolbox">Ma boîte à outils</h2>
+  <p class="section-subtitle reveal reveal-delay-2" data-fr="Les technologies et logiciels que j'utilise au quotidien pour livrer vos résultats de qualité." data-en="The technologies and software I use daily to deliver quality results.">Les technologies et logiciels que j'utilise au quotidien pour livrer vos résultats de qualité.</p>
   <div class="tools-grid reveal reveal-delay-3">
-    <div class="tool-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"/>
-      <span class="tool-name">HTML</span>
-    </div>
-    <div class="tool-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"/>
-      <span class="tool-name">CSS</span>
-    </div>
-    <div class="tool-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/>
-      <span class="tool-name">JavaScript</span>
-    </div>
-    <div class="tool-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress" style="filter: invert(27%) sepia(89%) saturate(400%) hue-rotate(170deg)"/>
-      <span class="tool-name">WordPress</span>
-    </div>
-    <div class="tool-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/>
-      <span class="tool-name">Figma</span>
-    </div>
-    <div class="tool-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/>
-      <span class="tool-name">MySQL</span>
-    </div>
-    <div class="tool-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle"/>
-      <span class="tool-name">Oracle</span>
-    </div>
-    <div class="tool-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"/>
-      <span class="tool-name">Linux</span>
-    </div>
-    <div class="tool-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"/>
-      <span class="tool-name">GitHub</span>
-    </div>
-    <div class="tool-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
-        <rect width="48" height="48" rx="8" fill="#1BA0D7"/>
-        <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="Arial">ACF</text>
-      </svg>
-      <span class="tool-name">ACF</span>
-    </div>
-    <div class="tool-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
-        <rect width="48" height="48" rx="8" fill="#E2231A"/>
-        <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Arial">Elementor</text>
-      </svg>
-      <span class="tool-name">Elementor</span>
-    </div>
-    <div class="tool-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
-        <rect width="48" height="48" rx="8" fill="#1BA0D7"/>
-        <text x="50%" y="38%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Arial">Cisco</text>
-        <text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">Networking</text>
-      </svg>
-      <span class="tool-name">Cisco</span>
-    </div>
-    <div class="tool-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
-        <rect width="48" height="48" rx="8" fill="#FF9A00"/>
-        <text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Ai</text>
-        <text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">ILLUSTRATOR</text>
-      </svg>
-      <span class="tool-name">Illustrator</span>
-    </div>
-    <div class="tool-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
-        <rect width="48" height="48" rx="8" fill="#31A8FF"/>
-        <text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Ps</text>
-        <text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">PHOTOSHOP</text>
-      </svg>
-      <span class="tool-name">Photoshop</span>
-    </div>
-    <div class="tool-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
-        <defs>
-          <linearGradient id="canvaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#7D2AE8"/>
-            <stop offset="100%" style="stop-color:#00C4CC"/>
-          </linearGradient>
-        </defs>
-        <rect width="48" height="48" rx="8" fill="url(#canvaGrad)"/>
-        <text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">C</text>
-        <text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">CANVA</text>
-      </svg>
-      <span class="tool-name">Canva</span>
-    </div>
-    <div class="tool-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40">
-        <rect width="48" height="48" rx="8" fill="#9999FF"/>
-        <text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Pr</text>
-        <text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">PREMIERE</text>
-      </svg>
-      <span class="tool-name">Premiere Pro</span>
-    </div>
+    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"/><span class="tool-name">HTML</span></div>
+    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"/><span class="tool-name">CSS</span></div>
+    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/><span class="tool-name">JavaScript</span></div>
+    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress" style="filter: invert(27%) sepia(89%) saturate(400%) hue-rotate(170deg)"/><span class="tool-name">WordPress</span></div>
+    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/><span class="tool-name">Figma</span></div>
+    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/><span class="tool-name">MySQL</span></div>
+    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle"/><span class="tool-name">Oracle</span></div>
+    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"/><span class="tool-name">Linux</span></div>
+    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"/><span class="tool-name">GitHub</span></div>
+    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><rect width="48" height="48" rx="8" fill="#1BA0D7"/><text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="Arial">ACF</text></svg><span class="tool-name">ACF</span></div>
+    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><rect width="48" height="48" rx="8" fill="#E2231A"/><text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Arial">Elementor</text></svg><span class="tool-name">Elementor</span></div>
+    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><rect width="48" height="48" rx="8" fill="#1BA0D7"/><text x="50%" y="38%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Arial">Cisco</text><text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">Networking</text></svg><span class="tool-name">Cisco</span></div>
+    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><rect width="48" height="48" rx="8" fill="#FF9A00"/><text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Ai</text><text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">ILLUSTRATOR</text></svg><span class="tool-name">Illustrator</span></div>
+    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><rect width="48" height="48" rx="8" fill="#31A8FF"/><text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Ps</text><text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">PHOTOSHOP</text></svg><span class="tool-name">Photoshop</span></div>
+    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><defs><linearGradient id="canvaGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7D2AE8"/><stop offset="100%" style="stop-color:#00C4CC"/></linearGradient></defs><rect width="48" height="48" rx="8" fill="url(#canvaGrad)"/><text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">C</text><text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">CANVA</text></svg><span class="tool-name">Canva</span></div>
+    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><rect width="48" height="48" rx="8" fill="#9999FF"/><text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Pr</text><text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">PREMIERE</text></svg><span class="tool-name">Premiere Pro</span></div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <p class="section-label reveal">Contact</p>
-  <h2 class="section-title reveal reveal-delay-1">Travaillons vos projets ensemble</h2>
-  <p class="section-subtitle reveal reveal-delay-2">Une idée de projet, une opportunité ou simplement envie d'échanger ? Je suis disponible.</p>
+  <p class="section-label reveal" data-fr="Contact" data-en="Contact">Contact</p>
+  <h2 class="section-title reveal reveal-delay-1" data-fr="Travaillons vos projets ensemble" data-en="Let's work on your projects together">Travaillons vos projets ensemble</h2>
+  <p class="section-subtitle reveal reveal-delay-2" data-fr="Une idée de projet, une opportunité ou simplement envie d'échanger ? Je suis disponible." data-en="A project idea, an opportunity or just want to chat? I am available.">Une idée de projet, une opportunité ou simplement envie d'échanger ? Je suis disponible.</p>
   <div class="contact-wrapper reveal reveal-delay-3">
     <div class="contact-form-box">
       <div class="contact-field">
-        <input type="text" id="cf-name" name="name" placeholder="Votre nom" required/>
+        <input type="text" id="cf-name" name="name" data-fr-placeholder="Votre nom" data-en-placeholder="Your name" placeholder="Votre nom" required/>
       </div>
       <div class="contact-field">
-        <input type="email" id="cf-email" name="email" placeholder="Votre email" required/>
+        <input type="email" id="cf-email" name="email" data-fr-placeholder="Votre email" data-en-placeholder="Your email" placeholder="Votre email" required/>
       </div>
       <div class="contact-field">
-        <input type="text" id="cf-service" name="service" placeholder="Type de service souhaité (ex: site web, design...)" />
+        <input type="text" id="cf-service" name="service" data-fr-placeholder="Type de service souhaité (ex: site web, design...)" data-en-placeholder="Type of service needed (e.g. website, design...)" placeholder="Type de service souhaité (ex: site web, design...)"/>
       </div>
       <div class="contact-field">
-        <textarea id="cf-message" name="message" rows="4" placeholder="Décrivez votre projet..." required></textarea>
+        <textarea id="cf-message" name="message" rows="4" data-fr-placeholder="Décrivez votre projet..." data-en-placeholder="Describe your project..." placeholder="Décrivez votre projet..." required></textarea>
       </div>
-      <button class="btn btn-primary cf-submit" onclick="sendFormspree()">Envoyer par Email ✉️</button>
-      <button class="btn btn-wa-form" onclick="sendWhatsApp()">Envoyer via WhatsApp 💬</button>
+      <button class="btn btn-primary cf-submit" onclick="sendFormspree()" data-fr="Envoyer par Email ✉️" data-en="Send by Email ✉️">Envoyer par Email ✉️</button>
+      <button class="btn btn-wa-form" onclick="sendWhatsApp()" data-fr="Envoyer via WhatsApp 💬" data-en="Send via WhatsApp 💬">Envoyer via WhatsApp 💬</button>
       <p class="cf-note" id="cf-note"></p>
     </div>
     <div class="contact-links-side">
@@ -773,19 +635,16 @@
     currentLang = currentLang === 'fr' ? 'en' : 'fr';
     var btn = document.getElementById('lang-btn');
     btn.textContent = currentLang === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR';
- 
-    // Translate text content
+
     document.querySelectorAll('[data-fr]').forEach(function(el) {
       var text = currentLang === 'fr' ? el.getAttribute('data-fr') : el.getAttribute('data-en');
       if (text) el.innerHTML = text;
     });
- 
-    // Translate placeholders
+
     document.querySelectorAll('[data-fr-placeholder]').forEach(function(el) {
       el.placeholder = currentLang === 'fr' ? el.getAttribute('data-fr-placeholder') : el.getAttribute('data-en-placeholder');
     });
- 
-    // Update html lang
+
     document.documentElement.lang = currentLang;
   }
 </script>
