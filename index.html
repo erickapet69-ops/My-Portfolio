@@ -17,6 +17,16 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--white); color: var(--text); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
+    /* LANG BUTTON */
+    .lang-btn {
+      background: var(--accent-soft); color: var(--accent);
+      border: 1.5px solid var(--accent); border-radius: 6px;
+      padding: 6px 14px; font-size: 0.8rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; font-family: var(--font-body);
+      letter-spacing: 0.04em;
+    }
+    .lang-btn:hover { background: var(--accent); color: white; }
+
     /* SCROLL FADE */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -80,6 +90,7 @@
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
     .btn-cv { background: var(--off-white); color: var(--dark); border: 1.5px solid var(--light); }
     .btn-cv:hover { background: var(--light); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+    
 
     /* PHOTO */
     .hero-visual { display: flex; justify-content: center; align-items: center; animation: fadeInRight 1s 0.4s ease both; }
@@ -286,6 +297,7 @@
     <li><a href="#projects">Projets</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+    <button class="lang-btn" onclick="toggleLang()" id="lang-btn">🇬🇧 EN</button>
 </nav>
 
 <!-- HERO -->
@@ -753,6 +765,28 @@
     }
     var text = 'Bonjour KAPET Eric,%0ANom : ' + encodeURIComponent(name) + '%0AService : ' + encodeURIComponent(service || 'Non précisé') + '%0AMessage : ' + encodeURIComponent(msg);
     window.open('https://wa.me/237657889978?text=' + text, '_blank');
+  }
+
+  // Language switcher
+  var currentLang = 'fr';
+  function toggleLang() {
+    currentLang = currentLang === 'fr' ? 'en' : 'fr';
+    var btn = document.getElementById('lang-btn');
+    btn.textContent = currentLang === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR';
+ 
+    // Translate text content
+    document.querySelectorAll('[data-fr]').forEach(function(el) {
+      var text = currentLang === 'fr' ? el.getAttribute('data-fr') : el.getAttribute('data-en');
+      if (text) el.innerHTML = text;
+    });
+ 
+    // Translate placeholders
+    document.querySelectorAll('[data-fr-placeholder]').forEach(function(el) {
+      el.placeholder = currentLang === 'fr' ? el.getAttribute('data-fr-placeholder') : el.getAttribute('data-en-placeholder');
+    });
+ 
+    // Update html lang
+    document.documentElement.lang = currentLang;
   }
 </script>
 </body>
