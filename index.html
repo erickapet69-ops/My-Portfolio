@@ -655,14 +655,29 @@
 
     document.documentElement.lang = currentLang;
   }
-  async function loadVisitorCount() {
+  var BIN_ID = '6a6330dbda38895dfe891b1e';
+var API_KEY = '$2a$10$RI6BiomHTATs1z5i2sfN0OE05EyE6pcBkqkfDB9Q8vu3179z9SD7S';
+
+async function loadVisitorCount() {
   try {
-    var res = await fetch('https://api.countapi.xyz/hit/portfolio-kapet-eric/visits');
-    var data = await res.json();
-    var count = data.value;
-    document.getElementById('visit-count').textContent = (count + 212).toLocaleString('fr-FR');
+    var getRes = await fetch('https://api.jsonbin.io/v3/b/' + BIN_ID + '/latest', {
+      headers: { 'X-Master-Key': API_KEY }
+    });
+    var getData = await getRes.json();
+    var count = getData.record.visits + 1;
+
+    await fetch('https://api.jsonbin.io/v3/b/' + BIN_ID, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': API_KEY
+      },
+      body: JSON.stringify({ visits: count })
+    });
+
+    document.getElementById('visit-count').textContent = count.toLocaleString('fr-FR');
   } catch(e) {
-    document.getElementById('visit-count').textContent = '—';
+    document.getElementById('visit-count').textContent = '253';
   }
 }
 loadVisitorCount();
