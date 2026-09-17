@@ -216,6 +216,42 @@
     /* CURSOR EFFECT */
     .cursor-glow { width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(42,82,212,0.07) 0%, transparent 70%); position: fixed; pointer-events: none; z-index: 0; transform: translate(-50%,-50%); transition: left 0.08s, top 0.08s; }
 
+    /* EXPERIENCE */
+#experience { background: var(--off-white); }
+.exp-timeline { display: flex; flex-direction: column; gap: 1.5rem; max-width: 800px; }
+.exp-card { background: white; border: 1px solid var(--light); border-radius: 12px; padding: 1.8rem; border-left: 4px solid var(--accent); transition: box-shadow 0.2s, transform 0.2s; }
+.exp-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.07); transform: translateY(-2px); }
+.exp-card.featured { border-left-color: #f59e0b; background: linear-gradient(135deg, #fffbeb 0%, white 100%); }
+.exp-badge { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-bottom: 0.8rem; }
+.exp-badge.new { background: #fef3c7; color: #d97706; }
+.exp-badge.regular { background: var(--accent-soft); color: var(--accent); }
+.exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+.exp-title { font-size: 1rem; font-weight: 600; color: var(--dark); }
+.exp-period { font-size: 0.78rem; color: var(--muted); font-weight: 500; white-space: nowrap; }
+.exp-company { font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-bottom: 0.8rem; }
+.exp-list { list-style: none; padding: 0; }
+.exp-list li { font-size: 0.82rem; color: var(--muted); line-height: 1.7; padding-left: 1rem; position: relative; margin-bottom: 0.3rem; }
+.exp-list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; }
+.exp-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+.exp-tech span { font-size: 0.68rem; font-weight: 500; background: var(--off-white); border: 1px solid var(--light); color: var(--dark); padding: 2px 8px; border-radius: 100px; }
+
+/* IT PROJECTS */
+#it-projects { background: var(--white); }
+.it-projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.4rem; }
+.it-card { border: 1px solid var(--light); border-radius: 12px; padding: 1.8rem; background: white; transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s; }
+.it-card:hover { border-color: var(--accent); box-shadow: 0 8px 30px rgba(42,82,212,0.1); transform: translateY(-3px); }
+.it-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+.it-card-title { font-size: 1rem; font-weight: 600; color: var(--dark); margin-bottom: 0.5rem; }
+.it-card-context { font-size: 0.72rem; font-weight: 500; color: #d97706; background: #fef3c7; padding: 3px 10px; border-radius: 100px; display: inline-block; margin-bottom: 0.8rem; }
+.it-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+.it-card-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.it-card-tech span { font-size: 0.7rem; font-weight: 500; background: var(--accent-soft); color: var(--accent); padding: 3px 10px; border-radius: 100px; }
+
+/* TOOLS CATEGORIES */
+.tools-categories { display: flex; flex-direction: column; gap: 2.5rem; }
+.tools-category-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dark); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent); display: inline-block; }
+.tools-row { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; padding-top: 100px; text-align: center; }
@@ -239,10 +275,12 @@
   <span class="nav-logo">KAPET Eric</span>
   <ul class="nav-links">
     <li><a href="#about" data-fr="À propos" data-en="About">À propos</a></li>
-    <li><a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a></li>
-    <li><a href="#services" data-fr="Services" data-en="Services">Services</a></li>
-    <li><a href="#projects" data-fr="Projets" data-en="Projects">Projets</a></li>
-    <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
+<li><a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a></li>
+<li><a href="#experience" data-fr="Expérience" data-en="Experience">Expérience</a></li>
+<li><a href="#it-projects" data-fr="Projets IT" data-en="IT Projects">Projets IT</a></li>
+<li><a href="#projects" data-fr="Projets Web" data-en="Web Projects">Projets Web</a></li>
+<li><a href="#tools" data-fr="Outils" data-en="Tools">Outils</a></li>
+<li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
   </ul>
   <button class="lang-btn" onclick="toggleLang()" id="lang-btn">🇬🇧 EN</button>
 </nav>
@@ -250,10 +288,9 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <span class="hero-eyebrow" data-fr="Technicien Support IT, Designer &amp; Administrateur Système Junior" data-en="IT Support Technician, Designer &amp; Junior System Administrator">Technicien Support IT, Designer &amp; Administrateur Système Junior</span>
+    <span class="hero-eyebrow" data-fr="Disponible pour opportunités professionnelles" data-en="Available for professional opportunities">Disponible pour opportunités professionnelles</span>
     <h1 class="hero-name">KAPET<br><em>Eric</em></h1>
-    <p class="hero-desc" data-fr="Je mets mes compétences au service des entreprises pour assurer la disponibilité, la sécurité et la performance de leurs infrastructures informatiques. Mes interventions couvrent l'assistance aux utilisateurs, la maintenance des équipements, l'administration des systèmes et réseaux, la gestion des incidents, la sécurisation des environnements informatiques ainsi que la gestion des sauvegardes et des accès utilisateurs." data-en="I put my skills at the service of companies to ensure the availability, security and performance of their IT infrastructures. My work covers user support, equipment maintenance, systems and network administration, incident management, IT environment security, and backup and user access management.">Je mets mes compétences au service des entreprises pour assurer la disponibilité, la sécurité et la performance de leurs infrastructures informatiques. Mes interventions couvrent l'assistance aux utilisateurs, la maintenance des équipements, l'administration des systèmes et réseaux, la gestion des incidents, la sécurisation des environnements informatiques ainsi que la gestion des sauvegardes et des accès utilisateurs.</p>
-    <p class="hero-desc" data-fr="Grâce à une approche méthodique et orientée résolution de problèmes, je contribue à garantir la continuité des activités et l'efficacité des outils numériques au sein des organisations. J'aime également transformer des idées complexes en solutions simples, fonctionnelles et visuellement impactantes." data-en="Through a methodical, problem-solving approach, I help ensure business continuity and the effectiveness of digital tools within organizations. I also enjoy turning complex ideas into simple, functional and visually impactful solutions.">Grâce à une approche méthodique et orientée résolution de problèmes, je contribue à garantir la continuité des activités et l'efficacité des outils numériques au sein des organisations. J'aime également transformer des idées complexes en solutions simples, fonctionnelles et visuellement impactantes.</p>
+    <p class="hero-desc" data-fr="Professionnel IT spécialisé en support, systèmes, réseaux et automatisation. Je conçois des solutions Microsoft 365 et Power Platform pour résoudre des problèmes opérationnels concrets." data-en="IT professional specialized in support, systems, networks and automation. I design Microsoft 365 and Power Platform solutions to solve concrete operational problems.">Professionnel IT spécialisé en support, systèmes, réseaux et automatisation. Je conçois des solutions Microsoft 365 et Power Platform pour résoudre des problèmes opérationnels concrets.</p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary" data-fr="Me contacter" data-en="Contact me">Me contacter</a>
       <a href="#skills" class="btn btn-outline" data-fr="Voir mes compétences" data-en="View my skills">Voir mes compétences</a>
@@ -266,8 +303,8 @@
       <div class="avatar-photo">
         <img src="images/photo.jpeg" alt="KAPET Eric"/>
       </div>
-      <div class="badge-floating badge-1"><span class="badge-dot"></span> Support Informatique &amp; Helpdesk</div>
-      <div class="badge-floating badge-2"><span class="badge-dot"></span> Design &amp; Dev</div>
+      <div class="badge-floating badge-1"><span class="badge-dot"></span> Support IT & Helpdesk</div>
+      <div class="badge-floating badge-2"><span class="badge-dot"></span> Power Apps & Automate</div>
     </div>
   </div>
 </section>
@@ -283,20 +320,20 @@
   </div>
   <div class="about-stats">
     <div class="stat-card reveal reveal-delay-1">
-      <span class="stat-number counter" data-target="2">0</span><span class="stat-suffix">+</span>
-      <span class="stat-label" data-fr="Années d'expérience" data-en="Years of experience">Années d'expérience</span>
-    </div>
-    <div class="stat-card reveal reveal-delay-2">
-      <span class="stat-number counter" data-target="3">0</span>
-      <span class="stat-label" data-fr="Projets réalisés" data-en="Completed projects">Projets réalisés</span>
-    </div>
-    <div class="stat-card reveal reveal-delay-3">
-      <span class="stat-number counter" data-target="89">0</span><span class="stat-suffix">%</span>
-      <span class="stat-label" data-fr="Clients satisfaits" data-en="Satisfied clients">Clients satisfaits</span>
-    </div>
-    <div class="stat-card reveal reveal-delay-4">
-      <span class="stat-number">7</span>
-      <span class="stat-label" data-fr="Services proposés" data-en="Services offered">Services proposés</span>
+  <span class="stat-number counter" data-target="2">0</span><span class="stat-suffix">+</span>
+  <span class="stat-label" data-fr="Années d'expérience" data-en="Years of experience">Années d'expérience</span>
+</div>
+<div class="stat-card reveal reveal-delay-2">
+  <span class="stat-number counter" data-target="4">0</span>
+  <span class="stat-label" data-fr="Entreprises" data-en="Companies">Entreprises</span>
+</div>
+<div class="stat-card reveal reveal-delay-3">
+  <span class="stat-number counter" data-target="3">0</span>
+  <span class="stat-label" data-fr="Projets d'automatisation" data-en="Automation projects">Projets d'automatisation</span>
+</div><div class="stat-card reveal reveal-delay-4">
+  <span class="stat-number counter" data-target="5">0</span>
+  <span class="stat-label" data-fr="Certifications" data-en="Certifications">Certifications</span>
+</div>
     </div>
   </div>
 </section>
@@ -392,7 +429,72 @@
     </div>
   </div>
 </section>
-
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label reveal" data-fr="Expérience" data-en="Experience">Expérience</p>
+  <h2 class="section-title reveal reveal-delay-1" data-fr="Mon parcours professionnel" data-en="My professional journey">Mon parcours professionnel</h2>
+  <p class="section-subtitle reveal reveal-delay-2" data-fr="Des expériences concrètes en entreprise, du support terrain à l'automatisation des processus." data-en="Concrete corporate experience, from field support to process automation.">Des expériences concrètes en entreprise, du support terrain à l'automatisation des processus.</p>
+  <div class="exp-timeline">
+    <div class="exp-card featured reveal reveal-delay-1">
+      <span class="exp-badge new">⭐ Dernière expérience</span>
+      <div class="exp-header">
+        <span class="exp-title">Stagiaire IT — Ressources Humaines</span>
+        <span class="exp-period">Août 2026 – Oct. 2026</span>
+      </div>
+      <p class="exp-company">Cameroon Oil Transportation Company (COTCO S.A.) — Douala</p>
+      <ul class="exp-list">
+        <li>Conception de solutions d'automatisation pour digitaliser les processus RH.</li>
+        <li>Conception d'une solution d'analyse intelligente des candidatures.</li>
+        <li>Automatisation du contrôle des factures des entreprises partenaires avec Power Automate.</li>
+        <li>Conception et automatisation du processus de demandes de congés avec Power Apps et Microsoft 365.</li>
+        <li>Automatisation de workflows pour réduire les tâches manuelles dans les processus RH.</li>
+      </ul>
+      <div class="exp-tech"><span>Power Apps</span><span>Power Automate</span><span>Microsoft 365</span><span>Automatisation RH</span></div>
+    </div>
+    <div class="exp-card reveal reveal-delay-2">
+      <span class="exp-badge regular">Expérience professionnelle</span>
+      <div class="exp-header">
+        <span class="exp-title">Professionnel IT & Community Manager</span>
+        <span class="exp-period">2025 – 2026</span>
+      </div>
+      <p class="exp-company">SaheloTrans — Douala</p>
+      <ul class="exp-list">
+        <li>Gestion et maintenance du parc informatique et des équipements réseaux.</li>
+        <li>Support technique de premier et second niveau aux utilisateurs.</li>
+        <li>Gestion de la visibilité de l'entreprise sur les réseaux sociaux.</li>
+      </ul>
+      <div class="exp-tech"><span>Support IT</span><span>Maintenance réseau</span><span>Community Management</span></div>
+    </div>
+    <div class="exp-card reveal reveal-delay-3">
+      <span class="exp-badge regular">Expérience professionnelle</span>
+      <div class="exp-header">
+        <span class="exp-title">Ingénieur IT & Maintenancier</span>
+        <span class="exp-period">2024 – 2025</span>
+      </div>
+      <p class="exp-company">Incubateur Technologique de l'Innovation (ITI) — Douala</p>
+      <ul class="exp-list">
+        <li>Installation et configuration de nouveaux équipements réseau.</li>
+        <li>Support à l'équipe technique pour la maintenance préventive et corrective.</li>
+        <li>Contribution à la documentation des procédures d'intervention.</li>
+      </ul>
+      <div class="exp-tech"><span>Réseaux</span><span>Maintenance</span><span>Documentation</span></div>
+    </div>
+    <div class="exp-card reveal reveal-delay-4">
+      <span class="exp-badge regular">Stage</span>
+      <div class="exp-header">
+        <span class="exp-title">Informaticien</span>
+        <span class="exp-period">2025</span>
+      </div>
+      <p class="exp-company">BelSam Fils — Douala</p>
+      <ul class="exp-list">
+        <li>Installation et configuration des systèmes d'exploitation et logiciels métiers.</li>
+        <li>Diagnostic et réparation des pannes matérielles et logicielles.</li>
+        <li>Gestion des sauvegardes et restaurations de données.</li>
+      </ul>
+      <div class="exp-tech"><span>Support</span><span>Maintenance</span><span>Sauvegarde</span></div>
+    </div>
+  </div>
+</section>
 <!-- PROJECTS -->
 <section id="projects">
   <p class="section-label reveal" data-fr="Projets" data-en="Projects">Projets</p>
@@ -456,6 +558,36 @@
   </div>
 </section>
 
+<!-- IT PROJECTS -->
+<section id="it-projects">
+  <p class="section-label reveal" data-fr="Projets IT" data-en="IT Projects">Projets IT</p>
+  <h2 class="section-title reveal reveal-delay-1" data-fr="Automatisation & Microsoft 365" data-en="Automation & Microsoft 365">Automatisation & Microsoft 365</h2>
+  <p class="section-subtitle reveal reveal-delay-2" data-fr="Solutions d'automatisation conçues chez COTCO S.A. pour digitaliser et optimiser les processus RH." data-en="Automation solutions designed at COTCO S.A. to digitalize and optimize HR processes.">Solutions d'automatisation conçues chez COTCO S.A. pour digitaliser et optimiser les processus RH.</p>
+  <div class="it-projects-grid">
+    <div class="it-card reveal reveal-delay-1">
+      <div class="it-card-icon">🤖</div>
+      <h3 class="it-card-title">Analyse intelligente des candidatures</h3>
+      <span class="it-card-context">COTCO S.A. — RH</span>
+      <p class="it-card-desc">Conception d'une solution pour faciliter le traitement et l'analyse des dossiers de recrutement. Automatisation du tri et de l'évaluation des candidatures pour réduire le temps de traitement.</p>
+      <div class="it-card-tech"><span>Power Automate</span><span>Microsoft 365</span><span>Automatisation</span></div>
+    </div>
+    <div class="it-card reveal reveal-delay-2">
+      <div class="it-card-icon">📄</div>
+      <h3 class="it-card-title">Contrôle automatisé des factures</h3>
+      <span class="it-card-context">COTCO S.A. — RH</span>
+      <p class="it-card-desc">Automatisation du contrôle des factures des entreprises partenaires de placement de personnel avec Power Automate. Réduction des erreurs et du temps de traitement manuel.</p>
+      <div class="it-card-tech"><span>Power Automate</span><span>Workflows</span><span>Contrôle qualité</span></div>
+    </div>
+    <div class="it-card reveal reveal-delay-3">
+      <div class="it-card-icon">🏖️</div>
+      <h3 class="it-card-title">Gestion automatisée des congés</h3>
+      <span class="it-card-context">COTCO S.A. — RH</span>
+      <p class="it-card-desc">Conception et automatisation du processus de demandes de congés avec Power Apps et Microsoft 365. Application permettant aux employés de soumettre leurs demandes et aux managers de les approuver automatiquement.</p>
+      <div class="it-card-tech"><span>Power Apps</span><span>Power Automate</span><span>Microsoft 365</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <img id="lightbox-img" src="" alt="Aperçu"/>
@@ -467,24 +599,52 @@
   <p class="section-label reveal" data-fr="Outils" data-en="Tools">Outils</p>
   <h2 class="section-title reveal reveal-delay-1" data-fr="Ma boîte à outils" data-en="My toolbox">Ma boîte à outils</h2>
   <p class="section-subtitle reveal reveal-delay-2" data-fr="Les technologies et logiciels que j'utilise au quotidien pour livrer vos résultats de qualité." data-en="The technologies and software I use daily to deliver quality results.">Les technologies et logiciels que j'utilise au quotidien pour livrer vos résultats de qualité.</p>
-  <div class="tools-grid reveal reveal-delay-3">
-    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"/><span class="tool-name">HTML</span></div>
-    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"/><span class="tool-name">CSS</span></div>
-    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/><span class="tool-name">JavaScript</span></div>
-    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress" style="filter: invert(27%) sepia(89%) saturate(400%) hue-rotate(170deg)"/><span class="tool-name">WordPress</span></div>
-    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/><span class="tool-name">Figma</span></div>
-    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/><span class="tool-name">MySQL</span></div>
-    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle"/><span class="tool-name">Oracle</span></div>
-    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"/><span class="tool-name">Linux</span></div>
-    <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"/><span class="tool-name">GitHub</span></div>
-    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><rect width="48" height="48" rx="8" fill="#1BA0D7"/><text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="Arial">ACF</text></svg><span class="tool-name">ACF</span></div>
-    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><rect width="48" height="48" rx="8" fill="#E2231A"/><text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Arial">Elementor</text></svg><span class="tool-name">Elementor</span></div>
-    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><rect width="48" height="48" rx="8" fill="#1BA0D7"/><text x="50%" y="38%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Arial">Cisco</text><text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">Networking</text></svg><span class="tool-name">Cisco</span></div>
-    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><rect width="48" height="48" rx="8" fill="#FF9A00"/><text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Ai</text><text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">ILLUSTRATOR</text></svg><span class="tool-name">Illustrator</span></div>
-    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><rect width="48" height="48" rx="8" fill="#31A8FF"/><text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Ps</text><text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">PHOTOSHOP</text></svg><span class="tool-name">Photoshop</span></div>
-    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><defs><linearGradient id="canvaGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7D2AE8"/><stop offset="100%" style="stop-color:#00C4CC"/></linearGradient></defs><rect width="48" height="48" rx="8" fill="url(#canvaGrad)"/><text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">C</text><text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">CANVA</text></svg><span class="tool-name">Canva</span></div>
-    <div class="tool-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40"><rect width="48" height="48" rx="8" fill="#9999FF"/><text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Pr</text><text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">PREMIERE</text></svg><span class="tool-name">Premiere Pro</span></div>
+ <div class="tools-categories reveal reveal-delay-3">
+  <div>
+    <p class="tools-category-title">Microsoft & Automatisation</p>
+    <div class="tools-row">
+      <div class="tool-item"><svg viewBox="0 0 48 48" width="36" height="36"><rect width="23" height="23" x="1" y="1" fill="#f25022"/><rect width="23" height="23" x="25" y="1" fill="#7fba00"/><rect width="23" height="23" x="1" y="25" fill="#00a4ef"/><rect width="23" height="23" x="25" y="25" fill="#ffb900"/></svg><span class="tool-name">Microsoft 365</span></div>
+      <div class="tool-item"><svg viewBox="0 0 48 48" width="36" height="36"><rect width="48" height="48" rx="8" fill="#742774"/><text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="Arial">Power Apps</text></svg><span class="tool-name">Power Apps</span></div>
+      <div class="tool-item"><svg viewBox="0 0 48 48" width="36" height="36"><rect width="48" height="48" rx="8" fill="#0066FF"/><text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-weight="bold" font-family="Arial">Power</text><text x="50%" y="68%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-weight="bold" font-family="Arial">Automate</text></svg><span class="tool-name">Power Automate</span></div>
+    </div>
   </div>
+  <div>
+    <p class="tools-category-title">IT & Systèmes</p>
+    <div class="tools-row">
+      <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"/><span class="tool-name">Linux</span></div>
+      <div class="tool-item"><svg viewBox="0 0 48 48" width="36" height="36"><rect width="48" height="48" rx="8" fill="#1BA0D7"/><text x="50%" y="38%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Arial">Cisco</text><text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">Networking</text></svg><span class="tool-name">Cisco</span></div>
+      <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"/><span class="tool-name">GitHub</span></div>
+    </div>
+  </div>
+  <div>
+    <p class="tools-category-title">Bases de données</p>
+    <div class="tools-row">
+      <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/><span class="tool-name">MySQL</span></div>
+      <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle"/><span class="tool-name">Oracle</span></div>
+    </div>
+  </div>
+  <div>
+    <p class="tools-category-title">Développement Web</p>
+    <div class="tools-row">
+      <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"/><span class="tool-name">HTML</span></div>
+      <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"/><span class="tool-name">CSS</span></div>
+      <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/><span class="tool-name">JavaScript</span></div>
+      <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress" style="filter: invert(27%) sepia(89%) saturate(400%) hue-rotate(170deg)"/><span class="tool-name">WordPress</span></div>
+      <div class="tool-item"><svg viewBox="0 0 48 48" width="36" height="36"><rect width="48" height="48" rx="8" fill="#E2231A"/><text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Arial">Elementor</text></svg><span class="tool-name">Elementor</span></div>
+      <div class="tool-item"><svg viewBox="0 0 48 48" width="36" height="36"><rect width="48" height="48" rx="8" fill="#1BA0D7"/><text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="Arial">ACF</text></svg><span class="tool-name">ACF</span></div>
+    </div>
+  </div>
+  <div>
+    <p class="tools-category-title">Design & Créativité</p>
+    <div class="tools-row">
+      <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/><span class="tool-name">Figma</span></div>
+      <div class="tool-item"><svg viewBox="0 0 48 48" width="36" height="36"><rect width="48" height="48" rx="8" fill="#FF9A00"/><text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Ai</text><text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">ILLUSTRATOR</text></svg><span class="tool-name">Illustrator</span></div>
+      <div class="tool-item"><svg viewBox="0 0 48 48" width="36" height="36"><rect width="48" height="48" rx="8" fill="#31A8FF"/><text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Ps</text><text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">PHOTOSHOP</text></svg><span class="tool-name">Photoshop</span></div>
+      <div class="tool-item"><svg viewBox="0 0 48 48" width="36" height="36"><defs><linearGradient id="canvaGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7D2AE8"/><stop offset="100%" style="stop-color:#00C4CC"/></linearGradient></defs><rect width="48" height="48" rx="8" fill="url(#canvaGrad)"/><text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">C</text><text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">CANVA</text></svg><span class="tool-name">Canva</span></div>
+      <div class="tool-item"><svg viewBox="0 0 48 48" width="36" height="36"><rect width="48" height="48" rx="8" fill="#9999FF"/><text x="50%" y="44%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Arial">Pr</text><text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7" font-family="Arial">PREMIERE</text></svg><span class="tool-name">Premiere Pro</span></div>
+    </div>
+  </div>
+</div>
 </section>
 
 <!-- CONTACT -->
@@ -521,7 +681,7 @@
 
 <footer>
   <div class="footer-content">
-    <span>© 2026 KAPET Eric — Technicien Support IT, Designer &amp; Administrateur Système Junior</span>
+    <span>© 2026 KAPET Eric — Technicien Support IT | Systèmes, Réseaux & Automatisation</span>
     <span class="footer-visits">👁 <span id="visit-count">...</span> visiteurs</span>
   </div>
 </footer>
